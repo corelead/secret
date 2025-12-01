@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>єДокумент</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="screen">
+
+    <div class="cards-slider">
+
+    <!-- CARD -->
+        <div class="card">
+          <h1 class="card-title">єДокумент</h1>
+
+          <div class="top-row">
+            <img src="img/photo.jpg" alt="photo" class="avatar">
+
+            <div class="info">
+              <p><strong>Дата народження:</strong><br>15.03.2009</p>
+              <p><strong>РНОКПП:</strong><br>3988611099</p>
+            </div>
+          </div>
+
+          <div class="status">
+            <div class="scroll-wrapper">
+                <span class="status-text">
+                    Документ діє під час воєнного стану. Ой у лузі червона калина похилилася,
+                    чогось наша славна Україна зажурилася.
+                    А ми тую червону калину підіймемо,
+                    а ми нашу славну Україну, гей, гей, розвеселимо!
+                </span>
+                <span class="status-text">
+                    Документ діє під час воєнного стану. Ой у лузі червона калина похилилася,
+                    чогось наша славна Україна зажурилася.
+                    А ми тую червону калину підіймемо,
+                    а ми нашу славну Україну, гей, гей, розвеселимо!
+                </span>
+            </div>
+          </div>
+
+          <div class="name-block">
+            Приходько<br>
+            Денис<br>
+            Валерійович
+          </div>
+
+          <button class="menu-btn">•••</button>
+        </div>
+
+        <div class="card">
+            <h1 class="card-title">Паспорт</h1>
+        
+            <div class="top-row">
+              <img src="img/photo.jpg" class="avatar">
+              <div class="info">
+                <p><strong>Серія/номер:</strong> ХХ123456</p>
+                <p><strong>Дата видачі:</strong> 02.07.2020</p>
+              </div>
+            </div>
+
+            <div class="name-block">
+                Приходько<br>Денис<br>Валерійович
+            </div>
+          
+              <button class="menu-btn">•••</button>
+        </div>
+
+        <div class="card">
+            <h1 class="card-title">Закордонний</h1>
+        
+            <div class="top-row">
+              <img src="img/photo.jpg" class="avatar">
+              <div class="info">
+                <p><strong>Номер:</strong> СА123456</p>
+                <p><strong>Дата видачі:</strong> 15.03.2023</p>
+              </div>
+            </div>
+        
+            <div class="name-block">
+              Приходько<br>Денис<br>Валерійович
+            </div>
+        
+            <button class="menu-btn">•••</button>
+        </div>
+
+    </div>
+
+    <!-- dots -->
+    <div class="dots">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- bottom bar -->
+    <nav class="bottom-nav">
+      <div class="item">
+        <img src="img/home.svg">
+        <span>Стрічка</span>
+      </div>
+      <div class="item">
+        <img src="img/docs.svg">
+        <span>Документи</span>
+      </div>
+      <div class="item">
+        <img src="img/services.svg">
+        <span>Сервіси</span>
+      </div>
+      <div class="item">
+        <img src="img/menu.svg">
+        <span>Меню</span>
+      </div>
+    </nav>
+
+  </div>
+
+  <script>
+    const slider = document.querySelector('.cards-slider');
+    const cards = document.querySelectorAll('.card');
+    const dots = document.querySelectorAll('.dots span');
+    
+    let isScrolling = false;
+    
+    function animate() {
+      const sliderRect = slider.getBoundingClientRect();
+      const sliderCenter = sliderRect.left + sliderRect.width / 2;
+    
+      let bestIndex = 0;
+      let bestDistance = Infinity;
+    
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+    
+        const distance = Math.abs(sliderCenter - cardCenter);
+    
+        // сохраняем ближайшую карточку
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          bestIndex = index;
+        }
+    
+        // плавная анимация карточек
+        let t = distance / (rect.width * 1.2);
+        if (t > 1) t = 1;
+    
+        const scale = 1 - (1 - 0.92) * t;
+        const translateY = 6 * t;
+        const opacity = 1 - (1 - 0.7) * t;
+    
+        card.style.transform = `translateZ(0) scale(${scale}) translateY(${translateY}px)`;
+        card.style.opacity = opacity;
+      });
+    
+      // 🔥 обновляем точки — ЭТО ИСПРАВЛЯЕТ ТВОЮ ПРОБЛЕМУ
+      dots.forEach((dot, i) => {
+        dot.style.opacity = i === bestIndex ? "1" : "0.3";
+      });
+    
+      if (isScrolling) requestAnimationFrame(animate);
+    }
+    
+    // запускаем анимацию при скролле
+    slider.addEventListener("scroll", () => {
+      isScrolling = true;
+      requestAnimationFrame(animate);
+    });
+    
+    slider.addEventListener("scrollend", () => {
+      isScrolling = false;
+    });
+    
+    // старт
+    window.addEventListener("load", () => {
+      requestAnimationFrame(animate);
+    });
+    </script>    
+
+</body>
+</html>

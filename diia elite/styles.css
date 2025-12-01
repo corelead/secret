@@ -1,0 +1,240 @@
+@font-face {
+    font-family: 'e-Ukraine';
+    src: url('fonts/e-Ukraine-Regular.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    font-family: 'e-Ukraine', sans-serif;
+
+    height: 100%;
+    overflow: hidden; /* ? запрещает прокрутку */
+  }
+  
+  .screen {
+    width: 430px; /* iPhone 14/15 Pro Max width */
+    height: 100vh;
+    background-size: 400% 400%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 80px; /* место под навбар */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .screen::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* top:0; left:0; right:0; bottom:0 */
+    z-index: 0;
+  
+    background: linear-gradient(130deg, #A7C7E7, #D9A7C7, #A7C7E7);
+    background-size: 400% 400%;
+    animation: gradientShift 38s ease infinite;
+  }
+  
+    /* всё содержимое поверх */
+    .screen > * {
+        position: relative;
+        z-index: 1;
+      }
+
+  @keyframes gradientShift {
+    0%   { filter: hue-rotate(0deg); }
+    50%  { filter: hue-rotate(180deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+  
+  /* CARD */
+  .card {
+    width: 360px;
+    height: 541px;
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(25px);
+    border-radius: 25px;
+    padding: 24px;
+    margin: 136px 0 0;
+    position: relative;
+    flex: 0 0 360px;     /* ширина в слайдере */
+    scroll-snap-align: center;
+    display: flex;            /* ВАЖНО */
+    flex-direction: column;   /* ВАЖНО */
+  }
+  
+  .card-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    margin-top: 6px;
+    margin-left: -5px;
+  }
+  
+  .top-row {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .avatar {
+    width: 154px;
+    height: 205px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-left: -5px;
+  }
+  
+  .info p {
+    font-size: 14px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  
+  .status {
+    position: absolute;
+    left: 0;
+    bottom: 125px;       /* ? корректно по макету */
+    width: 100%;
+    height: 32px;
+    background: linear-gradient(90deg, #A5ED99 0%, #90D0CF 100%);
+    padding: 0px 0px;
+    font-size: 13px;
+    margin: 0px 0;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;       /* <— ВАЖНО */
+  }
+  .scroll-wrapper {
+    display: flex;
+    animation: scrollText 35s linear infinite;
+  }
+  .status-text {
+    padding-right: 0px;      /* расстояние между копиями */
+    white-space: nowrap;
+    font-size: 13px;
+  }  
+  @keyframes scrollText {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .name-block {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: auto;      /* ? ОНО САМО СТАНЕТ В НИЗ */
+    margin-left: -5px;
+  }
+  
+  .menu-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 36px;
+    background: #000;
+    color: #ffffff;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    font-size: 22px;
+  }
+  
+  /* dots */
+  .dots {
+    position: absolute;
+    bottom: 140px;   /* поднимай/опускай как хочешь */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    z-index: 5;      /* ? ПОДНИМАЕТ НАД КАРТОЧКОЙ */
+  }
+  
+  .dots span {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    opacity: .4;
+    border-radius: 50%;
+  }
+  
+  .dots span.active {
+    opacity: 1;
+  }
+
+  /* bottom nav */
+  .bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 104px;
+    background: #000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 30px;
+  }
+  
+  .bottom-nav .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+    font-size: 10px;
+  }
+  
+  .bottom-nav img {
+    width: 24px;
+    margin-bottom: 4px;
+  }
+  
+  .cards-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 35px;   /* ? говорим "центр здесь" */
+    padding: 20px 35px 0;  
+  }
+  
+  .cards-slider::-webkit-scrollbar {
+    display: none; /* скрыть полосу прокрутки */
+  }
+  
+  .card {
+    flex: 0 0 360px;  /* ширина карточки */
+    scroll-snap-align: center;
+  }
+
+  /* Анимация карточек при свайпе, как в Дії */
+  .card {
+    transition: transform 0.1s linear, opacity 0.1s linear;
+    transform-origin: center center;
+  }
+  
+  
+  .card.inactive {
+    transform: scale(0.92) translateY(6px);
+    opacity: 0.7;
+  }
+  
+  .card.active {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }  
+
+  
