@@ -8,11 +8,11 @@
 
   <link rel="manifest" href="manifest.json">
 
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#A7C7E7">
 
   <!-- iOS fullscreen mode -->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Дія">
 
   <!-- iOS icons -->
@@ -23,6 +23,11 @@
 
 </head>
 <body>
+
+  <div class="gradient-top"></div>
+
+<div class="safe-area-top"></div>
+
 
   <div class="screen">
 
@@ -68,7 +73,24 @@
         </div>
 
         <div class="card">
-            <h1 class="card-title">Паспорт</h1>
+            <h1 class="card-title">Картка платника податків</h1>
+        
+            <div class="top-row">
+              <div class="info">
+                <p><strong>РНОКПП</strong>
+                  <div class="name-block">
+                    Приходько<br>Денис<br>Валерійович
+                  </div>
+                <p><strong>Дата видачі:</strong> 15.03.2023</p>
+              </div>
+            </div>
+        
+        
+            <button class="menu-btn">•••</button>
+        </div>
+
+        <div class="card">
+            <h1 class="card-title">Паспорт громадянина України</h1>
         
             <div class="top-row">
               <img src="img/photo.jpg" class="avatar">
@@ -86,7 +108,7 @@
         </div>
 
         <div class="card">
-            <h1 class="card-title">Закордонний</h1>
+            <h1 class="card-title">Закордонний<br>паспорт</h1>
         
             <div class="top-row">
               <img src="img/photo.jpg" class="avatar">
@@ -102,15 +124,30 @@
         
             <button class="menu-btn">•••</button>
         </div>
+        
+      <div class="card actions-card">
+        <div class="action-btn add-doc">
+          <img src="img/plus.svg" class="action-icon">
+          <p>Додати документ</p>
+        </div>
+
+        <div class="action-btn reorder-docs">
+          <img src="img/arrows.svg" class="action-icon">
+          <p>Змінити порядок<br>документів</p>
+        </div>
+      </div>
+        
 
     </div>
 
     <!-- dots -->
     <div class="dots">
-        <span class="active"></span>
-        <span></span>
-        <span></span>
-    </div>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+</div>
 
     <!-- bottom bar -->
     <nav class="bottom-nav">
@@ -172,11 +209,6 @@
         card.style.opacity = opacity;
       });
     
-      // 🔥 обновляем точки — ЭТО ИСПРАВЛЯЕТ ТВОЮ ПРОБЛЕМУ
-      dots.forEach((dot, i) => {
-        dot.style.opacity = i === bestIndex ? "1" : "0.3";
-      });
-    
       if (isScrolling) requestAnimationFrame(animate);
     }
     
@@ -201,6 +233,128 @@
     navigator.serviceWorker.register("/service-worker.js");
   }
 </script>
+
+<script>
+const dots2 = document.querySelectorAll(".dot");
+
+// Универсальная функция определения размера точки
+function getDotClass(i, active, total) {
+    let start = active - 1;
+
+    if (start < 0) start = 0;
+    if (start > total - 3) start = total - 3;
+
+    let end = start + 2;
+
+    if (i >= start && i <= end) {
+        return i === active ? "active" : "standard";
+    }
+
+    let dist = 0;
+    if (i < start) dist = start - i;
+    else if (i > end) dist = i - end;
+
+    if (dist === 1) return "smaller";
+    if (dist >= 2) return "smallest";
+
+    return "standard";
+}
+
+// обновление точек
+function updateDotsCorrect(activeIndex) {
+    const total = dots2.length;
+    dots2.forEach((dot, i) => {
+        dot.className = "dot " + getDotClass(i, activeIndex, total);
+    });
+}
+
+// ВКЛЮЧАЕМ ПРИ АНИМАЦИИ ТВОИХ КАРТОЧЕК
+function updateActiveFromCards() {
+    const sliderRect = slider.getBoundingClientRect();
+    const sliderCenter = sliderRect.left + sliderRect.width / 2;
+
+    let bestIndex = 0;
+    let bestDistance = Infinity;
+
+    cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+
+        const distance = Math.abs(sliderCenter - cardCenter);
+        if (distance < bestDistance) {
+            bestDistance = distance;
+            bestIndex = index;
+        }
+    });
+
+    updateDotsCorrect(bestIndex);
+}
+
+
+
+
+slider.addEventListener("scroll", updateActiveFromCards);
+window.addEventListener("load", updateActiveFromCards);
+</script>
+
+<canvas id="gradCanvas" width="1" height="1" style="display:none;"></canvas>
+
+<script>
+const gradientColors = [
+    '#A7C7E7',
+    '#D9A7C7',
+    '#A7C7E7'
+];
+
+let t = 0;
+let speed = 0.003;
+
+function lerp(a, b, t) {
+    return a + (b - a) * t;
+}
+
+function hexToRgb(hex) {
+    const bigint = parseInt(hex.slice(1), 16);
+    return {
+        r: (bigint >> 16) & 255,
+        g: (bigint >> 8) & 255,
+        b: bigint & 255
+    };
+}
+
+function interpolateColor() {
+    let i1 = Math.floor(t) % gradientColors.length;
+    let i2 = (i1 + 1) % gradientColors.length;
+    let local = t % 1;
+
+    let c1 = hexToRgb(gradientColors[i1]);
+    let c2 = hexToRgb(gradientColors[i2]);
+
+    let r = Math.floor(lerp(c1.r, c2.r, local));
+    let g = Math.floor(lerp(c1.g, c2.g, local));
+    let b = Math.floor(lerp(c1.b, c2.b, local));
+
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+function updateGlobalGradient() {
+    const color = interpolateColor();
+
+    // Меняем цвет theme-color наверху
+    const meta = document.querySelector("meta[name=theme-color]");
+    if (meta) meta.setAttribute("content", color);
+
+    // Меняем фон приложения
+    document.body.style.background = color;
+    document.querySelector(".screen").style.background = color;
+
+    t += speed;
+    requestAnimationFrame(updateGlobalGradient);
+}
+
+updateGlobalGradient();
+</script>
+
 
 
 </body>

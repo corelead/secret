@@ -11,7 +11,7 @@
   }
   
   html, body {
-    background: #000;
+    background: transparent;
     display: flex;
     justify-content: center;
     font-family: 'e-Ukraine', sans-serif;
@@ -19,6 +19,26 @@
     height: 100%;
     overflow: hidden; /* ? запрещает прокрутку */
   }
+
+.gradient-top {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: env(safe-area-inset-top);
+    background: linear-gradient(130deg, #A7C7E7, #D9A7C7, #A7C7E7);
+    animation: gradientShift 38s ease infinite;
+    z-index: 999;
+}
+
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(130deg, #A7C7E7, #D9A7C7, #A7C7E7);
+    background-size: 400% 400%;
+    animation: gradientShift 38s ease infinite;
+}
+
   
   .screen {
     width: 430px; /* iPhone 14/15 Pro Max width */
@@ -38,7 +58,7 @@
     inset: 0; /* top:0; left:0; right:0; bottom:0 */
     z-index: 0;
   
-    background: linear-gradient(130deg, #A7C7E7, #D9A7C7, #A7C7E7);
+    background: transparent;
     background-size: 400% 400%;
     animation: gradientShift 38s ease infinite;
   }
@@ -63,7 +83,7 @@
     backdrop-filter: blur(25px);
     border-radius: 25px;
     padding: 24px;
-    margin: 136px 0 0;
+    margin: 86px 0 0;
     position: relative;
     flex: 0 0 360px;     /* ширина в слайдере */
     scroll-snap-align: center;
@@ -78,6 +98,65 @@
     margin-top: 6px;
     margin-left: -5px;
   }
+  
+  /* Контейнер страницы-карточки (обе кнопки внутри) */
+.actions-card {
+    flex: 0 0 360px;       /* как обычная страница */
+    scroll-snap-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 9px;
+
+    background: transparent !important; /* УБИРАЕМ ФОН */
+    backdrop-filter: none !important;
+
+    height: 541px; /* ровно как другие страницы */
+    padding: 0;
+    margin-top: 86px; /* как у остальных карточек */
+}
+
+
+/* Кнопочные карточки */
+.action-btn {
+    height: 267px;    /* уменьшил на 10px чтобы красиво вставало */
+    width: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    border-radius: 32px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* Верхняя карточка — сильно скругляем сверху */
+.add-doc {
+    border-radius: 25px 25px 17px 17px;
+}
+
+/* Нижняя карточка — сильно скругляем снизу */
+.reorder-docs {
+    border-radius: 17px 17px 25px 25px;
+}
+
+.action-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 12px;
+    filter: invert(1); /* 0 — чёрный, 1 — белый */
+}
+
+.action-btn p {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+}
+
   
   .top-row {
     display: flex;
@@ -140,40 +219,63 @@
   
   .menu-btn {
     position: absolute;
-    right: 20px;
-    bottom: 36px;
+    right: 17px;
+    bottom: 32px;
     background: #000;
     color: #ffffff;
-    width: 42px;
-    height: 42px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     border: none;
-    font-size: 22px;
+    font-size: 12px;
+    display: flex;               /* ? позволит центрировать */
+    justify-content: center;     /* ? горизонтально по центру */
+    align-items: center;         /* ? вертикально по центру */
   }
   
   /* dots */
-  .dots {
+
+.dots {
     position: absolute;
-    bottom: 140px;   /* поднимай/опускай как хочешь */
-    left: 0;
+    bottom: 200px;
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 6px;
-    z-index: 5;      /* ? ПОДНИМАЕТ НАД КАРТОЧКОЙ */
-  }
-  
-  .dots span {
+    gap: 10px;
+    z-index: 10;
+    margin-left: 15px;
+}
+
+  .dot {
     width: 8px;
     height: 8px;
-    background: #fff;
-    opacity: .4;
+    background: white;
     border-radius: 50%;
-  }
-  
-  .dots span.active {
+    opacity: 0.8;
+    transition: all 0.25s ease;
+}
+
+.dot.active {
     opacity: 1;
-  }
+}
+
+.dot.standard {
+    width: 8px;
+    height: 8px;
+    opacity: 0.8;
+}
+
+.dot.smaller {
+    width: 6px;
+    height: 6px;
+    opacity: 0.6;
+}
+
+.dot.smallest {
+    width: 4px;
+    height: 4px;
+    opacity: 0.4;
+}
 
   /* bottom nav */
   .bottom-nav {
