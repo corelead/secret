@@ -86,7 +86,7 @@
     padding: 24px;
     margin: 86px 0 0;
     position: relative;
-    flex: 0 0 360px;     /* ширина в слайдере */
+    flex: 0 0 360px !important;     /* ширина в слайдере */
     scroll-snap-align: center;
     display: flex;            /* ВАЖНО */
     flex-direction: column;   /* ВАЖНО */
@@ -308,11 +308,10 @@
   
   .cards-slider {
     display: flex;
-    gap: 20px;
+    gap: 4px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-padding: 0 35px;   /* ? говорим "центр здесь" */
-    padding: 20px 35px 0;  
+    padding: 20px 0 0;  
     touch-action: pan-x !important;
   }
   
@@ -560,4 +559,10 @@
 
 .tab-screen.active {
     display: block;
+}
+
+/* Невидимые карточки для идеального центрирования */
+.ghost-card {
+    flex: 0 0 calc((100vw - 324px) / 2);
+    pointer-events: none;
 }
