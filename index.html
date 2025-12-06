@@ -503,6 +503,10 @@ function updateGlobalGradient() {
     document.body.style.background = color;
     document.querySelector(".screen").style.background = color;
 
+    const ls = document.querySelector(".lock-screen");
+    if (ls) ls.style.background = color;
+
+
     // 🔥 Делаем, чтобы services-header имела тот же цвет
     const sh = document.querySelector(".services-header");
     if (sh) sh.style.background = color;

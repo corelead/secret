@@ -345,8 +345,14 @@
 .lock-screen {
     position: fixed;
     inset: 0;
-    background: rgba(240,240,255,0.7);
-    backdrop-filter: blur(25px);
+    /* background: rgba(240,240,255,0.7);
+    backdrop-filter: blur(25px); */
+    /* background: 
+    radial-gradient(circle at 30% 30%, #b9ddf6 0%, #a3d0ee 40%, transparent 80%),
+    radial-gradient(circle at 80% 80%, #e3f7d9 0%, #d5f3cd 40%, transparent 80%),
+    linear-gradient(180deg, #b4d7f0 0%, #d7f5e3 100%);
+    background-size: cover;
+    background-repeat: no-repeat; */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* реоепэ щкелемрш пюяопедекемш */
