@@ -5,9 +5,9 @@ self.addEventListener("install", (event) => {
         "/",
         "/index.html",
         "/styles.css",
-        "/icons/icon-192.png",
-        "/icons/icon-512.png",
-        "/icons/icon-1024.png"
+        "/icons/diia-192.png",
+        "/icons/diia-512.png",
+        "/icons/diia-1024.png"
       ]);
     })
   );

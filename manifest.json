@@ -1,5 +1,5 @@
 {
-    "name": "Ä³ÿ Web",
+    "name": "Ä³ÿ",
     "short_name": "Ä³ÿ",
     "theme_color": "#000000",
     "background_color": "#000000",
@@ -7,19 +7,19 @@
     "orientation": "portrait",
     "icons": [
       {
-        "src": "icons/icon-192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "icons/icon-512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      },
-      {
-        "src": "icons/icon-1024.png",
-        "sizes": "1024x1024",
-        "type": "image/png"
-      }
+      "src": "icons/diia-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/diia-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/diia-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
     ]
   }  
