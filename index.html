@@ -78,8 +78,14 @@
             <img src="img/photo.jpg" alt="photo" class="avatar">
 
             <div class="info">
-              <p><strong>Дата народження:</strong><br>15.03.2009</p>
-              <p><strong>РНОКПП:</strong><br>3988611099</p>
+              <p class="info-field">
+                <span class="label">Дата народження:</span>
+                <span class="value">15.03.2009</span>
+              </p>
+              <p class="info-field">
+                <span class="label">РНОКПП:</span>
+                <span class="value">3988611099</span>
+              </p>
             </div>
           </div>
 
@@ -109,22 +115,34 @@
           <button class="menu-btn">•••</button>
         </div>
 
-        <div class="card">
-            <h1 class="card-title">Картка платника податків</h1>
-        
-            <div class="top-row">
-              <div class="info">
-                <p><strong>РНОКПП</strong>
-                  <div class="name-block">
-                    Приходько<br>Денис<br>Валерійович
-                  </div>
-                <p><strong>Дата видачі:</strong> 15.03.2023</p>
-              </div>
-            </div>
-        
-        
-            <button class="menu-btn">•••</button>
+        <div class="card tax-card">
+    <h1 class="card-title">Картка платника<br>податків</h1>
+
+    <p class="section-label">РНОКПП</p>
+
+    <div class="fio-block">
+        Приходько<br>
+        Денис<br>
+        Валерійович
+    </div>
+
+    <div class="info-block">
+        <span class="label">Дата народження:</span>
+        <span class="value">15.03.2009</span>
+    </div>
+
+    <div class="status">
+        <div class="scroll-wrapper">
+            <span class="status-text">Документ оновлено о 23:20 | 29.11.2025 • Перевірено</span>
+            <span class="status-text">Документ оновлено о 23:20 | 29.11.2025 • Перевірено</span>
         </div>
+    </div>
+
+    <div class="big-number">3988611099 <img src="img/menu/ic_copy.svg"></div>
+
+    <button class="menu-btn">•••</button>
+</div>
+
 
         <div class="card">
             <h1 class="card-title">Паспорт громадянина України</h1>
@@ -356,11 +374,18 @@
         let t = distance / (rect.width * 1.2);
         if (t > 1) t = 1;
     
-        const scale = 1 - (1 - 0.92) * t;
-        const translateY = 6 * t;
-        const opacity = 1 - (1 - 0.7) * t;
+const scaleY = 1 - 0.135 * t;   // уменьшение высоты боковой карты до 85%
+const translateY = 44 * t;     // сдвиг вниз, чтобы вверх не уезжало
+
+card.style.transformOrigin = "top center";
+card.style.transform = `scaleY(${scaleY}) translateY(${translateY}px)`;
+
+
+
+
+         const opacity = 1 - (1 - 1) * t; 
     
-        card.style.transform = `translateZ(0) scale(${scale}) translateY(${translateY}px)`;
+      
         card.style.opacity = opacity;
       });
     
