@@ -10,7 +10,8 @@
 
   <link rel="manifest" href="manifest.json">
 
-  <meta name="theme-color" content="#A7C7E7">
+  <meta name="theme-color" content="#A7D4FF">
+  
 
   <!-- iOS fullscreen mode -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -25,6 +26,11 @@
 
 </head>
 <body>
+<div class="diia-bg">
+    <div id="cloud1"></div>
+    <div id="cloud2"></div>
+    <div id="cloud3"></div>
+</div>
 
   <div id="lockScreen" class="lock-screen">
   <h1 class="lock-title">Код для входу</h1>
@@ -71,7 +77,7 @@
 
     <div class="ghost-card"></div>
     <!-- CARD -->
-        <div class="card">
+        <div class="card" onclick="showErrorOverlay()">
           <h1 class="card-title">єДокумент</h1>
 
           <div class="top-row">
@@ -95,13 +101,13 @@
                     Документ діє під час воєнного стану. Ой у лузі червона калина похилилася,
                     чогось наша славна Україна зажурилася.
                     А ми тую червону калину підіймемо,
-                    а ми нашу славну Україну, гей, гей, розвеселимо!
+                    а ми нашу славну Україну, гей, гей, розвеселимо!&nbsp;
                 </span>
                 <span class="status-text">
                     Документ діє під час воєнного стану. Ой у лузі червона калина похилилася,
                     чогось наша славна Україна зажурилася.
                     А ми тую червону калину підіймемо,
-                    а ми нашу славну Україну, гей, гей, розвеселимо!
+                    а ми нашу славну Україну, гей, гей, розвеселимо!&nbsp;
                 </span>
             </div>
           </div>
@@ -112,10 +118,10 @@
             Валерійович
           </div>
 
-          <button class="menu-btn">•••</button>
+          <button class="menu-btn"><img src="img/more_fill.svg"></button>
         </div>
 
-        <div class="card tax-card">
+        <div class="card tax-card" onclick="showErrorOverlay()">
     <h1 class="card-title">Картка платника<br>податків</h1>
 
     <p class="section-label">РНОКПП</p>
@@ -133,51 +139,83 @@
 
     <div class="status">
         <div class="scroll-wrapper">
-            <span class="status-text">Документ оновлено о 23:20 | 29.11.2025 • Перевірено</span>
-            <span class="status-text">Документ оновлено о 23:20 | 29.11.2025 • Перевірено</span>
+            <span class="status-text">Документ оновлено о 06:37 | 08.12.2025 •&nbsp;</span>
+            <span class="status-text">Документ оновлено о 06:37 | 08.12.2025 •&nbsp;</span>
         </div>
     </div>
 
     <div class="big-number">3988611099 <img src="img/menu/ic_copy.svg"></div>
 
-    <button class="menu-btn">•••</button>
+    <button class="menu-btn"><img src="img/more_fill.svg"></button>
 </div>
 
 
-        <div class="card">
+        <div class="card" onclick="showErrorOverlay()">
             <h1 class="card-title">Паспорт громадянина України</h1>
         
             <div class="top-row">
               <img src="img/photo.jpg" class="avatar">
               <div class="info">
-                <p><strong>Серія/номер:</strong> ХХ123456</p>
-                <p><strong>Дата видачі:</strong> 02.07.2020</p>
+                <p class="info-field">
+                <span class="label">Дата народження:</span>
+                <span class="value">15.03.2009</span>
+                </p>
+                <p class="info-field">
+                <span class="label">Номер:</span>
+                <span class="value">010516315</span>
+                </p>
+                <div class="signature">
+                  <img src="img/signature.png">
+                </div>
               </div>
             </div>
+
+<div class="status">
+        <div class="scroll-wrapper">
+            <span class="status-text">Документ оновлено о 06:37 | 08.12.2025 •&nbsp;</span>
+            <span class="status-text">Документ оновлено о 06:37 | 08.12.2025 •&nbsp;</span>
+        </div>
+    </div>
 
             <div class="name-block">
                 Приходько<br>Денис<br>Валерійович
             </div>
           
-              <button class="menu-btn">•••</button>
+              <button class="menu-btn"><img src="img/more_fill.svg"></button>
         </div>
 
-        <div class="card">
+        <div class="card" onclick="showErrorOverlay()">
             <h1 class="card-title">Закордонний<br>паспорт</h1>
         
             <div class="top-row">
               <img src="img/photo.jpg" class="avatar">
               <div class="info">
-                <p><strong>Номер:</strong> СА123456</p>
-                <p><strong>Дата видачі:</strong> 15.03.2023</p>
+                <p class="info-field">
+                <span class="label">Дата народження:</span>
+                <span class="value">15.03.2009</span>
+                </p>
+                <p class="info-field">
+                <span class="label">Номер:</span>
+                <span class="value">GJ222391</span>
+                </p>
+                <div class="signature">
+                  <img src="img/signature.png">
+                </div>
               </div>
             </div>
         
+<div class="status">
+        <div class="scroll-wrapper">
+            <span class="status-text">Документ оновлено о 06:37 | 08.12.2025 •&nbsp;</span>
+            <span class="status-text">Документ оновлено о 06:37 | 08.12.2025 •&nbsp;</span>
+        </div>
+    </div>
+
             <div class="name-block">
               Приходько<br>Денис<br>Валерійович
             </div>
         
-            <button class="menu-btn">•••</button>
+            <button class="menu-btn"><img src="img/more_fill.svg"></button>
         </div>
         
       <div class="card actions-card">
@@ -196,6 +234,18 @@
 
     </div>
 </div>
+
+<div id="errorOverlay" class="error-overlay">
+  <div class="error-card">
+      <div class="error-emoji"><img src="img/index_up.png"></div>
+      <div class="error-text">Коди для перевірки<br>не завантажено</div>
+
+      <button class="error-btn" onclick="hideErrorOverlay()">
+          Спробувати ще раз
+      </button>
+  </div>
+</div>
+
 
 
 <div id="tab-services" class="tab-screen">
@@ -479,11 +529,12 @@ window.addEventListener("load", updateActiveFromCards);
 
 <canvas id="gradCanvas" width="1" height="1" style="display:none;"></canvas>
 
-<script>
+<!-- <script>
 const gradientColors = [
     '#A7C7E7',
     '#D9A7C7',
-    '#A7C7E7'
+    '#c5e4b4',
+    '#b2addd'
 ];
 
 let t = 0;
@@ -542,7 +593,7 @@ function updateGlobalGradient() {
 }
 
 updateGlobalGradient();
-</script>
+</script> -->
 
 <script>
 let pass = "";
@@ -592,6 +643,57 @@ document.getElementById("btn-docs").onclick = () => showTab("docs");
 document.getElementById("btn-services").onclick = () => showTab("services");
 document.getElementById("btn-menu").onclick = () => showTab("menu");
 </script>
+
+<script>
+document.querySelectorAll(".status").forEach(status => {
+    const wrap = status.querySelector(".scroll-wrapper");
+    if (!wrap) return;
+
+    // если одна копия текста — клонируем вторую
+    if (wrap.children.length === 1) {
+        wrap.append(wrap.children[0].cloneNode(true));
+    }
+
+    // Размер полного содержимого (двух копий текста)
+    const width = wrap.scrollWidth;
+
+    // Скорость в px/сек (регулируешь сам)
+    const speed = 40;
+
+    // Длительность анимации
+    const duration = width / speed;
+
+    // Полностью задаём анимацию
+    wrap.style.animation = `scrollText ${duration}s linear infinite`;
+});
+</script>
+
+<script>
+  let errorCooldown = false;
+
+function showErrorOverlay() {
+    if (errorCooldown) return;  // кулдаун — не открываем
+
+    const overlay = document.getElementById("errorOverlay");
+    overlay.classList.add("active");
+}
+
+
+function hideErrorOverlay() {
+    const overlay = document.getElementById("errorOverlay");
+    overlay.classList.remove("active");
+
+    // Включаем кулдаун
+    errorCooldown = true;
+
+    // Через сколько можно снова открывать
+    setTimeout(() => {
+        errorCooldown = false;
+    }, 1200); // 1.2 секунды — можешь менять
+}
+
+</script>
+
 
 
 </body>
