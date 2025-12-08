@@ -21,79 +21,45 @@
     touch-action: none;
   }
 
-.diia-bg {
+.gradient-bg {
     position: fixed;
     inset: 0;
     z-index: -10;
-    pointer-events: none;
-    overflow: hidden;
-    background: #A7D4FF; /* основной цвет Дії */
+
+    /* Верхняя фиксированная полоса */
+    background:
+        linear-gradient(
+            to bottom,
+            #A7D4FF 0%,     /* цвет статус-бара */
+            #A7D4FF 1%,     /* фиксированная зона 8% экрана */
+            transparent 40%
+        ),
+        
+        /* Анимируемая часть */
+        linear-gradient(
+            125deg,
+            #8BD7FF 0%,
+            #B9A8FF 22%,
+            #FFC5E1 45%,
+            #FFE4C5 70%,
+            #DFFFBD 100%
+        );
+
+    background-size: 100% 100%, 300% 300%;
+    background-repeat: no-repeat;
+
+    animation: diiaFlow 26s ease-in-out infinite;
+
+    height: 100dvh;
 }
 
-/* ОБЛАКО 1 — мягкий жёлтый */
-#cloud1 {
-    position: absolute;
-    width: 160%;
-    height: 160%;
-    border-radius: 50%;
-    background: radial-gradient(circle,
-        rgba(255,241,199,0.55) 0%,
-        rgba(255,241,199,0) 70%
-    );
-    top: -20%;
-    left: -20%;
-    animation: cloud1move 14s ease-in-out infinite;
-}
 
-/* ОБЛАКО 2 — мята */
-#cloud2 {
-    position: absolute;
-    width: 150%;
-    height: 150%;
-    border-radius: 50%;
-    background: radial-gradient(circle,
-        rgba(215,245,227,0.55) 0%,
-        rgba(215,245,227,0) 70%
-    );
-    bottom: -25%;
-    right: -15%;
-    animation: cloud2move 16s ease-in-out infinite;
+/* Анимация как в Дії: мягкое движение цвета */
+@keyframes diiaFlow {
+    0%   { background-position: 0% 0%,   0% 50%; }
+    50%  { background-position: 0% 0%, 100% 50%; }
+    100% { background-position: 0% 0%,   0% 50%; }
 }
-
-/* ОБЛАКО 3 — розовое */
-#cloud3 {
-    position: absolute;
-    width: 170%;
-    height: 170%;
-    border-radius: 50%;
-    background: radial-gradient(circle,
-        rgba(234,199,255,0.45) 0%,
-        rgba(234,199,255,0) 75%
-    );
-    top: 10%;
-    right: -30%;
-    animation: cloud3move 20s ease-in-out infinite;
-}
-
-/* АНИМАЦИИ */
-@keyframes cloud1move {
-    0%   { transform: translate(0,0) scale(1); }
-    50%  { transform: translate(40px, -20px) scale(1.15); }
-    100% { transform: translate(0,0) scale(1); }
-}
-
-@keyframes cloud2move {
-    0%   { transform: translate(0,0) scale(1); }
-    50%  { transform: translate(-30px, 30px) scale(1.12); }
-    100% { transform: translate(0,0) scale(1); }
-}
-
-@keyframes cloud3move {
-    0%   { transform: translate(0,0) scale(1); }
-    50%  { transform: translate(20px, -40px) scale(1.18); }
-    100% { transform: translate(0,0) scale(1); }
-}
-
 
 
 
@@ -799,10 +765,11 @@
 }
 
 .signature img {
-  width: 120px;      /* ширина */
+  width: 80px;      /* ширина */
   height: auto;      /* авто-высота с сохранением пропорций */
   display: block;    /* убирает лишние отступы */
-  margin-left: -10px;
+  margin-left: 3px;
+  margin-top: -15px;
 }
 
 /* ====== ERROR OVERLAY (як у Дії) ====== */
