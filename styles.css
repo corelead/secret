@@ -18,48 +18,94 @@
 
     height: 100%;
     overflow: hidden; /* ? запрещает прокрутку */
-    touch-action: none;
   }
 
-.gradient-bg {
+.diia-bg {
     position: fixed;
     inset: 0;
-    z-index: -10;
+    overflow: hidden;
 
-    /* Верхняя фиксированная полоса */
     background:
-        linear-gradient(
-            to bottom,
-            #A7D4FF 0%,     /* цвет статус-бара */
-            #A7D4FF 1%,     /* фиксированная зона 8% экрана */
-            transparent 40%
-        ),
-        
-        /* Анимируемая часть */
-        linear-gradient(
-            125deg,
-            #8BD7FF 0%,
-            #B9A8FF 22%,
-            #FFC5E1 45%,
-            #FFE4C5 70%,
-            #DFFFBD 100%
-        );
+        /* ЖЕЛТЫЙ снизу справа */
+        radial-gradient(circle at 78% 88%, #fce2b4 0%, rgba(255, 223, 168, 0) 45%),
 
-    background-size: 100% 100%, 300% 300%;
-    background-repeat: no-repeat;
+        /* РОЗОВЫЙ снизу слева */
+        radial-gradient(circle at 30% 62%, #db98ae 30%, rgba(227, 163, 184, 0) 52%),
 
-    animation: diiaFlow 26s ease-in-out infinite;
+        /* ГОЛУБОЙ сверху */
+        radial-gradient(circle at 80% 12%, #8e94ca 10%, rgba(168, 184, 219, 0) 60%),
 
-    height: 100dvh;
+        /* БАЗОВЫЙ ТОН */
+        #ab9e85;
+    background-size: cover;
 }
 
 
-/* Анимация как в Дії: мягкое движение цвета */
-@keyframes diiaFlow {
-    0%   { background-position: 0% 0%,   0% 50%; }
-    50%  { background-position: 0% 0%, 100% 50%; }
-    100% { background-position: 0% 0%,   0% 50%; }
-}
+
+  .blob {
+    position: absolute;
+    width: 170%;
+    height: 170%;
+    border-radius: 50%;
+    filter: blur(200px);
+    opacity: 0.95; /* намного насыщеннее */
+  }
+
+  /* Blob №1 — тёплые жёлто-розовые вспышки */
+  .b1 {
+    background: radial-gradient(circle,
+      rgba(255,230,130,1) 0%,
+      rgba(255,200,140,0.8) 30%,
+      rgba(255,150,180,0.0) 70%
+    );
+    animation: move1 18s infinite ease-in-out;
+  }
+
+  /* Blob №2 — холодная голубая область */
+  .b2 {
+    background: radial-gradient(circle,
+      rgba(90,180,255,1) 0%,
+      rgba(120,200,255,0.8) 40%,
+      rgba(100,180,255,0.0) 75%
+    );
+    animation: move2 22s infinite ease-in-out;
+  }
+
+  /* Blob №3 — фиолетово-бирюзовый мягкий тон */
+  .b3 {
+    background: radial-gradient(circle,
+      rgba(200,120,255,1) 0%,
+      rgba(150,200,255,0.8) 40%,
+      rgba(150,200,255,0.0) 70%
+    );
+    animation: move3 26s infinite ease-in-out;
+  }
+
+  @keyframes move1 {
+    0%   { transform: translate(-10%, -20%); }
+    20%  { transform: translate(20%, -10%); }
+    40%  { transform: translate(30%, 20%); }
+    60%  { transform: translate(-5%, 25%); }
+    80%  { transform: translate(-20%, 0%); }
+    100% { transform: translate(-10%, -20%); }
+  }
+
+  @keyframes move2 {
+    0%   { transform: translate(15%, -5%); }
+    25%  { transform: translate(35%, 10%); }
+    50%  { transform: translate(5%, 30%); }
+    75%  { transform: translate(-15%, 10%); }
+    100% { transform: translate(15%, -5%); }
+  }
+
+  @keyframes move3 {
+    0%   { transform: translate(20%, 25%); }
+    25%  { transform: translate(-5%, 20%); }
+    50%  { transform: translate(-25%, -5%); }
+    75%  { transform: translate(0%, -15%); }
+    100% { transform: translate(20%, 25%); }
+  }
+
 
 
 

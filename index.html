@@ -25,7 +25,8 @@
 
 </head>
 <body>
-  <div class="gradient-bg"></div>
+<div class="diia-bg"></div>
+
   <div id="lockScreen" class="lock-screen">
   <h1 class="lock-title">Код для входу</h1>
 
@@ -522,72 +523,6 @@ window.addEventListener("load", updateActiveFromCards);
 </script>
 
 <canvas id="gradCanvas" width="1" height="1" style="display:none;"></canvas>
-
-<script>
-const gradientColors = [
-    '#A7C7E7',
-    '#D9A7C7',
-    '#c5e4b4',
-    '#b2addd'
-];
-
-let t = 0;
-let speed = 0.002;
-
-function lerp(a, b, t) {
-    return a + (b - a) * t;
-}
-
-function hexToRgb(hex) {
-    const bigint = parseInt(hex.slice(1), 16);
-    return {
-        r: (bigint >> 16) & 255,
-        g: (bigint >> 8) & 255,
-        b: bigint & 255
-    };
-}
-
-function interpolateColor() {
-    let i1 = Math.floor(t) % gradientColors.length;
-    let i2 = (i1 + 1) % gradientColors.length;
-    let local = t % 1;
-
-    let c1 = hexToRgb(gradientColors[i1]);
-    let c2 = hexToRgb(gradientColors[i2]);
-
-    let r = Math.floor(lerp(c1.r, c2.r, local));
-    let g = Math.floor(lerp(c1.g, c2.g, local));
-    let b = Math.floor(lerp(c1.b, c2.b, local));
-
-    return `rgb(${r}, ${g}, ${b})`;
-}
-
-function updateGlobalGradient() {
-    const color = interpolateColor();
-
-    // Меняем цвет theme-color наверху
-    const meta = document.querySelector("meta[name=theme-color]");
-    if (meta) meta.setAttribute("content", color);
-
-    // Меняем фон приложения
-    document.body.style.background = color;
-    document.querySelector(".screen").style.background = color;
-
-    const ls = document.querySelector(".lock-screen");
-    if (ls) ls.style.background = color;
-
-
-    // 🔥 Делаем, чтобы services-header имела тот же цвет
-    const sh = document.querySelector(".services-header");
-    if (sh) sh.style.background = color;
-
-
-    t += speed;
-    requestAnimationFrame(updateGlobalGradient);
-}
-
-updateGlobalGradient();
-</script>
 
 <script>
 let pass = "";
