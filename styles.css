@@ -26,85 +26,25 @@
     overflow: hidden;
 
     background:
-        /* ЖЕЛТЫЙ снизу справа */
-        radial-gradient(circle at 78% 88%, #fce2b4 0%, rgba(255, 223, 168, 0) 45%),
+        /* большое светлое пятно внизу справа */
+        radial-gradient(
+            circle at 82% 88%,
+            rgba(218, 238, 217, 0.90) 0%,
+            rgba(218, 238, 217, 0.55) 28%,
+            rgba(218, 238, 217, 0.18) 55%,
+            rgba(218, 238, 217, 0.00) 80%
+        ),
 
-        /* РОЗОВЫЙ снизу слева */
-        radial-gradient(circle at 30% 62%, #db98ae 30%, rgba(227, 163, 184, 0) 52%),
-
-        /* ГОЛУБОЙ сверху */
-        radial-gradient(circle at 80% 12%, #8e94ca 10%, rgba(168, 184, 219, 0) 60%),
-
-        /* БАЗОВЫЙ ТОН */
-        #ab9e85;
-    background-size: cover;
+        /* общий голубой вертикальный градиент */
+        linear-gradient(
+            to bottom,
+            #81bee9 0%,
+            #9bc9eb 42%,
+            #6aa0c7 72%,
+            #a7e4e9 100%
+        );
 }
 
-
-
-  .blob {
-    position: absolute;
-    width: 170%;
-    height: 170%;
-    border-radius: 50%;
-    filter: blur(200px);
-    opacity: 0.95; /* намного насыщеннее */
-  }
-
-  /* Blob №1 — тёплые жёлто-розовые вспышки */
-  .b1 {
-    background: radial-gradient(circle,
-      rgba(255,230,130,1) 0%,
-      rgba(255,200,140,0.8) 30%,
-      rgba(255,150,180,0.0) 70%
-    );
-    animation: move1 18s infinite ease-in-out;
-  }
-
-  /* Blob №2 — холодная голубая область */
-  .b2 {
-    background: radial-gradient(circle,
-      rgba(90,180,255,1) 0%,
-      rgba(120,200,255,0.8) 40%,
-      rgba(100,180,255,0.0) 75%
-    );
-    animation: move2 22s infinite ease-in-out;
-  }
-
-  /* Blob №3 — фиолетово-бирюзовый мягкий тон */
-  .b3 {
-    background: radial-gradient(circle,
-      rgba(200,120,255,1) 0%,
-      rgba(150,200,255,0.8) 40%,
-      rgba(150,200,255,0.0) 70%
-    );
-    animation: move3 26s infinite ease-in-out;
-  }
-
-  @keyframes move1 {
-    0%   { transform: translate(-10%, -20%); }
-    20%  { transform: translate(20%, -10%); }
-    40%  { transform: translate(30%, 20%); }
-    60%  { transform: translate(-5%, 25%); }
-    80%  { transform: translate(-20%, 0%); }
-    100% { transform: translate(-10%, -20%); }
-  }
-
-  @keyframes move2 {
-    0%   { transform: translate(15%, -5%); }
-    25%  { transform: translate(35%, 10%); }
-    50%  { transform: translate(5%, 30%); }
-    75%  { transform: translate(-15%, 10%); }
-    100% { transform: translate(15%, -5%); }
-  }
-
-  @keyframes move3 {
-    0%   { transform: translate(20%, 25%); }
-    25%  { transform: translate(-5%, 20%); }
-    50%  { transform: translate(-25%, -5%); }
-    75%  { transform: translate(0%, -15%); }
-    100% { transform: translate(20%, 25%); }
-  }
 
 
 
@@ -152,7 +92,7 @@
   .card {
     width: 355px;
     height: 537px;
-    background: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.3);
     backdrop-filter: blur(25px);
     border-radius: 24px;
     padding: 24px;
@@ -367,8 +307,8 @@
   
   .menu-btn {
     position: absolute;
-    right: 17px;
-    bottom: 32px;
+    right: 16px;
+    bottom: 26px;
     background: #000;
     color: #ffffff;
     width: 28px;
@@ -491,23 +431,36 @@
 .lock-screen {
     position: fixed;
     inset: 0;
-    /* background: rgba(240,240,255,0.7);
-    backdrop-filter: blur(25px); */
-    /* background: 
-    radial-gradient(circle at 30% 30%, #b9ddf6 0%, #a3d0ee 40%, transparent 80%),
-    radial-gradient(circle at 80% 80%, #e3f7d9 0%, #d5f3cd 40%, transparent 80%),
-    linear-gradient(180deg, #b4d7f0 0%, #d7f5e3 100%);
-    background-size: cover;
-    background-repeat: no-repeat; */
+
+    background:
+        radial-gradient(
+            circle at 82% 88%,
+            rgba(218, 238, 217, 0.90) 0%,
+            rgba(218, 238, 217, 0.55) 28%,
+            rgba(218, 238, 217, 0.18) 55%,
+            rgba(218, 238, 217, 0.00) 80%
+        ),
+        linear-gradient(
+            to bottom,
+            #81bee9 0%,
+            #9bc9eb 42%,
+            #6aa0c7 72%,
+            #a7e4e9 100%
+        );
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* ТЕПЕРЬ ЭЛЕМЕНТЫ РАСПРЕДЕЛЕНЫ */
     align-items: center;
-    padding-top: 62.5px;  /* расстояние до тайтла сверху */
-    padding-bottom: 190px; /* можно регулировать высоту клавиатуры */
+    justify-content: space-between;
+
+    padding-top: 70px;
+    padding-bottom: 190px;
+
     z-index: 10000;
-    backdrop-filter: blur(800px);
 }
+
+
+
 
 
 .lock-title {
@@ -551,6 +504,7 @@
     color: #000;
     background: rgba(255,255,255,0.8);
     backdrop-filter: blur(8px);
+    touch-action: manipulation;
 }
 
 .lock-pad .face {
@@ -558,8 +512,19 @@
 }
 
 .lock-pad .del {
-    font-size: 24px;
+    background: none;          /* убирает круг */
+    border: none;              /* без рамки */
+    box-shadow: none;          /* вдруг добавлялась тень */
+    width: auto;               /* кнопка по размеру символа */
+    height: auto;
+    font-size: 32px;           /* размер символа */
+    padding: 0;                /* убираем внутренние отступы */
 }
+
+.lock-pad .del:active {
+    opacity: 0.5;              /* небольшой эффект нажатия */
+}
+
 
 .lock-forgot {
     font-size: 16px;
@@ -855,11 +820,10 @@
     padding: 20px;
 }
 
-.error-emoji img {
-  width: 35px;      /* ширина */
-  height: auto;      /* авто-высота с сохранением пропорций */
+.error-emoji {
+  font-size: 35px;
   display: block;    /* убирает лишние отступы */
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .error-text {
@@ -897,3 +861,183 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
     -ms-user-select: none;
     user-select: none;
 }
+
+/* === WELCOME SCREEN === */
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 11000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 120px;
+    padding-bottom: 170px;
+
+    /* Тот же градиент, что у приложения */
+    background:
+        radial-gradient(
+            circle at 82% 88%,
+            rgba(218, 238, 217, 0.90) 0%,
+            rgba(218, 238, 217, 0.55) 28%,
+            rgba(218, 238, 217, 0.18) 55%,
+            rgba(218, 238, 217, 0.00) 80%
+        ),
+        linear-gradient(
+            to bottom,
+            #81bee9 0%,
+            #9bc9eb 42%,
+            #6aa0c7 72%,
+            #a7e4e9 100%
+        );
+
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.welcome-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.welcome-title {
+    font-size: 53px;
+    font-weight: 700;
+    margin-top: 180px;
+}
+
+.welcome-logo {
+    width: 130px;
+    height: auto;
+    border-radius: 22px;
+    margin-top: 390px;
+    object-fit: contain;
+}
+
+/* ==== OVERLAY ==== */
+.dialog-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(80px);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 8000;
+}
+
+.dialog-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ==== POPUP ==== */
+.dialog {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -40%);
+    width: 378px;
+    height: 290px;
+
+    background: white;
+    border-radius: 18px;
+
+    padding: 28px 24px 32px;
+    text-align: center;
+
+    opacity: 0;
+    scale: 0.9;
+    transition: 0.25s ease;
+
+    z-index: 9000;
+    pointer-events: none;
+}
+
+.dialog.show {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, -50%);
+    scale: 1;
+}
+
+/* CLOSE BUTTON (крестик) */
+.dialog-close {
+    position: absolute;
+    right: 22px;
+    top: 12px;
+
+    background: none;
+    border: none;
+    font-size: 34px;
+    opacity: 0.35;
+    cursor: pointer;
+}
+
+/* EMOJI */
+.dialog-emoji {
+    font-size: 35px;
+    margin-top: 10px;
+}
+
+/* TEXT */
+.dialog-text {
+  margin-top: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+/* ACTION BUTTON */
+.dialog-action {
+    width: 65%;
+    background: white;
+    color: black;  
+    border-radius: 30px;
+    border: 2px solid black;  /* ЧЁРНАЯ рамка */
+    padding: 14px 0;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 40px;
+}
+
+/* === ЖОВТА БІГУЧА СТРОКА ЯК У ДІЇ === */
+.yellow-ticker {
+    position: fixed;
+    bottom: 104px; /* рівно над navbar */
+    left: 0;
+    width: 100%;
+    height: 32px;
+
+    background: #FFE24A;
+    overflow: hidden;
+    display: none; /* приховано за замовчанням */
+
+    z-index: 6000; /* зверху над документами */
+}
+
+.yellow-ticker.show {
+    display: block;
+}
+
+.ticker-scroll {
+    display: flex;
+    animation: tickerMove 9s linear infinite; /* ?? добавили 25s */
+    white-space: nowrap;
+}
+
+.ticker-scroll span {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 32px;
+}
+
+/* Анімація */
+@keyframes tickerMove {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
