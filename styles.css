@@ -278,7 +278,7 @@
 .scroll-wrapper {
   display: flex;
   white-space: nowrap;
-  animation: scrollText 18s linear infinite;
+  animation: scrollText 12s linear infinite;
 }
 
 @keyframes scrollText {
