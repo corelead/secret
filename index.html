@@ -742,10 +742,43 @@ addDocBtn.addEventListener("click", () => {
     document.querySelectorAll(".status-updated .status-text").forEach(span => {
         span.textContent = text;
     });
+    
+    initStatusMarquee();
+    
 })();
 </script>
 
+<script>
+function initStatusMarquee() {
+  document.querySelectorAll(".status").forEach(status => {
+    const wrap = status.querySelector(".scroll-wrapper");
+    if (!wrap) return;
 
+    const spans = wrap.querySelectorAll(".status-text");
+    if (spans.length < 2) return;
+
+    const textWidth = spans[0].offsetWidth;
+    if (textWidth === 0) return;
+
+    const speed = 40; // px/sec (можеш міняти)
+    const duration = textWidth / speed;
+
+    wrap.style.animation = "none";
+    wrap.offsetHeight; // форсимо перерахунок
+
+    wrap.style.animation = `marquee ${duration}s linear infinite`;
+  });
+}
+
+// keyframes через JS
+const style = document.createElement("style");
+style.textContent = `
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}`;
+document.head.appendChild(style);
+</script>
 
 </body>
 </html>
