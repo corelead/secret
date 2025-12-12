@@ -17,7 +17,7 @@
     font-family: 'e-Ukraine', sans-serif;
 
     height: 100%;
-    overflow: hidden; /* ? Г§Г ГЇГ°ГҐГ№Г ГҐГІ ГЇГ°Г®ГЄГ°ГіГІГЄГі */
+    overflow: hidden; /* ? запрещает прокрутку */
   }
 
 .diia-bg {
@@ -26,7 +26,7 @@
     overflow: hidden;
 
     background:
-        /* ГЎГ®Г«ГјГёГ®ГҐ Г±ГўГҐГІГ«Г®ГҐ ГЇГїГІГ­Г® ГўГ­ГЁГ§Гі Г±ГЇГ°Г ГўГ  */
+        /* большое светлое пятно внизу справа */
         radial-gradient(
             circle at 82% 88%,
             rgba(218, 238, 217, 0.90) 0%,
@@ -35,7 +35,7 @@
             rgba(218, 238, 217, 0.00) 80%
         ),
 
-        /* Г®ГЎГ№ГЁГ© ГЈГ®Г«ГіГЎГ®Г© ГўГҐГ°ГІГЁГЄГ Г«ГјГ­Г»Г© ГЈГ°Г Г¤ГЁГҐГ­ГІ */
+        /* общий голубой вертикальный градиент */
         linear-gradient(
             to bottom,
             #81bee9 0%,
@@ -60,7 +60,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-bottom: 80px; /* Г¬ГҐГ±ГІГ® ГЇГ®Г¤ Г­Г ГўГЎГ Г° */
+    padding-bottom: 80px; /* место под навбар */
     position: relative;
     overflow: hidden;
   }
@@ -76,7 +76,7 @@
     animation: gradientShift 38s ease infinite;
   }
   
-    /* ГўГ±Вё Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ ГЇГ®ГўГҐГ°Гµ */
+    /* всё содержимое поверх */
     .screen > * {
         position: relative;
         z-index: 1;
@@ -98,10 +98,10 @@
     padding: 24px;
     margin: 86px 0 0;
     position: relative;
-    flex: 0 0 355px !important;     /* ГёГЁГ°ГЁГ­Г  Гў Г±Г«Г Г©Г¤ГҐГ°ГҐ */
+    flex: 0 0 355px !important;     /* ширина в слайдере */
     scroll-snap-align: center;
-    display: flex;            /* Г‚ГЂГ†ГЌГЋ */
-    flex-direction: column;   /* Г‚ГЂГ†ГЌГЋ */
+    display: flex;            /* ВАЖНО */
+    flex-direction: column;   /* ВАЖНО */
     will-change: transform;
   }
   
@@ -113,9 +113,9 @@
     margin-left: -5px;
   }
   
-  /* ГЉГ®Г­ГІГҐГ©Г­ГҐГ° Г±ГІГ°Г Г­ГЁГ¶Г»-ГЄГ Г°ГІГ®Г·ГЄГЁ (Г®ГЎГҐ ГЄГ­Г®ГЇГЄГЁ ГўГ­ГіГІГ°ГЁ) */
+  /* Контейнер страницы-карточки (обе кнопки внутри) */
 .actions-card {
-    flex: 0 0 360px;       /* ГЄГ ГЄ Г®ГЎГ»Г·Г­Г Гї Г±ГІГ°Г Г­ГЁГ¶Г  */
+    flex: 0 0 360px;       /* как обычная страница */
     scroll-snap-align: center;
 
     display: flex;
@@ -123,18 +123,18 @@
     justify-content: center;
     gap: 9px;
 
-    background: transparent !important; /* Г“ГЃГ€ГђГЂГ…ГЊ Г”ГЋГЌ */
+    background: transparent !important; /* УБИРАЕМ ФОН */
     backdrop-filter: none !important;
 
-    height: 541px; /* Г°Г®ГўГ­Г® ГЄГ ГЄ Г¤Г°ГіГЈГЁГҐ Г±ГІГ°Г Г­ГЁГ¶Г» */
+    height: 541px; /* ровно как другие страницы */
     padding: 0;
-    margin-top: 86px; /* ГЄГ ГЄ Гі Г®Г±ГІГ Г«ГјГ­Г»Гµ ГЄГ Г°ГІГ®Г·ГҐГЄ */
+    margin-top: 86px; /* как у остальных карточек */
 }
 
 
-/* ГЉГ­Г®ГЇГ®Г·Г­Г»ГҐ ГЄГ Г°ГІГ®Г·ГЄГЁ */
+/* Кнопочные карточки */
 .action-btn {
-    height: 267px;    /* ГіГ¬ГҐГ­ГјГёГЁГ« Г­Г  10px Г·ГІГ®ГЎГ» ГЄГ°Г Г±ГЁГўГ® ГўГ±ГІГ ГўГ Г«Г® */
+    height: 267px;    /* уменьшил на 10px чтобы красиво вставало */
     width: 100%;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(20px);
@@ -148,12 +148,12 @@
     text-align: center;
 }
 
-/* Г‚ГҐГ°ГµГ­ГїГї ГЄГ Г°ГІГ®Г·ГЄГ  вЂ” Г±ГЁГ«ГјГ­Г® Г±ГЄГ°ГіГЈГ«ГїГҐГ¬ Г±ГўГҐГ°ГµГі */
+/* Верхняя карточка — сильно скругляем сверху */
 .add-doc {
     border-radius: 25px 25px 17px 17px;
 }
 
-/* ГЌГЁГ¦Г­ГїГї ГЄГ Г°ГІГ®Г·ГЄГ  вЂ” Г±ГЁГ«ГјГ­Г® Г±ГЄГ°ГіГЈГ«ГїГҐГ¬ Г±Г­ГЁГ§Гі */
+/* Нижняя карточка — сильно скругляем снизу */
 .reorder-docs {
     border-radius: 17px 17px 25px 25px;
 }
@@ -162,7 +162,7 @@
     width: 32px;
     height: 32px;
     margin-bottom: 12px;
-    filter: invert(1); /* 0 вЂ” Г·ВёГ°Г­Г»Г©, 1 вЂ” ГЎГҐГ«Г»Г© */
+    filter: invert(1); /* 0 — чёрный, 1 — белый */
 }
 
 .action-btn p {
@@ -177,30 +177,56 @@
     gap: 16px;
   }
   
-  .avatar {
-    width: 149px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 16px;
-    margin-left: -5px;
-  }
+.avatar-frame{
+  position: relative;
+  width: 149px;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;            /* важно: чтобы обводка была внутри */
+  margin-left: -8px;
+}
+
+/* фото */
+.avatar-frame .avatar{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+
+  /* убери, если было */
+  border: none;
+  box-shadow: none;
+}
+
+/* ?? 2px тёмная обводка ВНУТРИ фото */
+.avatar-frame::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.15);
+}
+
+
   
 .info-field {
   width: 70px;
     font-size: 13px;
     margin: 0 0 8px 0;
-    line-height: 1.5; /* Г­Г®Г°Г¬Г Г«ГјГ­Г Гї ГЇГ«Г®ГІГ­Г®Г±ГІГј ГІГҐГЄГ±ГІГ  */
+    line-height: 1.5; /* нормальная плотность текста */
     margin-bottom: 16px;
     margin-left: 5px;
 }
 
 .info-field .label,
 .info-field .value {
-    display: block; /* Г±ГІГ ГўГЁГ¬ Г®Г¤Г­Гі ГЇГ®Г¤ Г®Г¤Г­Г®Г© */
+    display: block; /* ставим одну под одной */
 }
 
 .info-field .label {
-    margin-bottom: 4px; /* ? Г°ГҐГЈГіГ«ГЁГ°ГіГҐГёГј Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ ГўГ°ГіГ·Г­ГіГѕ! */
+    margin-bottom: 4px; /* ? регулируешь расстояние вручную! */
 }
 
 .tax-card .card-title {
@@ -232,7 +258,7 @@
     font-size: 13px;
     font-weight: 600;
     line-height: 1.5;
-    margin-bottom: 140px; /* Г·ГІГ®ГЎГ» Г®ГІГ®Г¤ГўГЁГ­ГіГІГј ГЄ Г§ГҐГ«ГҐГ­Г®Г© ГЇГ®Г«Г®Г±ГҐ, ГЄГ ГЄ Гў Г„ВіВї */
+    margin-bottom: 140px; /* чтобы отодвинуть к зеленой полосе, как в Дії */
 }
 
 .tax-card .info-block .label {
@@ -251,7 +277,7 @@
 
 .tax-card .status {
     left: 0;
-    bottom: 95px; /* ГЄГ ГЄ Г­Г  ГІГўГ®ВёГ¬ Г±ГЄГ°ГЁГ­ГҐ вЂ“ Г·ГіГІГј ГўГ»ГёГҐ Г­Г®Г¬ГҐГ°Г  */
+    bottom: 95px; /* как на твоём скрине – чуть выше номера */
 }
 
 .tax-card .menu-btn {
@@ -262,7 +288,7 @@
   .status {
     position: absolute;
     left: 0;
-    bottom: 125px;       /* ? ГЄГ®Г°Г°ГҐГЄГІГ­Г® ГЇГ® Г¬Г ГЄГҐГІГі */
+    bottom: 125px;       /* ? корректно по макету */
     width: 100%;
     height: 32px;
     background: linear-gradient(90deg, #A5ED99 0%, #90D0CF 100%);
@@ -272,32 +298,36 @@
     border-radius: 0px;
     display: flex;
     align-items: center;
-    overflow: hidden;       /* <вЂ” Г‚ГЂГ†ГЌГЋ */
+    overflow: hidden;       /* <— ВАЖНО */
   }
 
 .scroll-wrapper {
-  display: flex;
-  white-space: nowrap;
-  animation: scrollText 12s linear infinite;
+    display: flex;
+    animation: scrollText linear infinite;
 }
 
-@keyframes scrollText {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
   
   .status-text {
-    padding-right: 0px;      /* Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ Г¬ГҐГ¦Г¤Гі ГЄГ®ГЇГЁГїГ¬ГЁ */
+    padding-right: 0px;      /* расстояние между копиями */
     white-space: nowrap;
     font-size: 13px;
-    line-height: 32px;     /* ГґГЁГЄГ±ГЁГ°ГіГҐГ¬ */
+    line-height: 32px;     /* фиксируем */
     height: 32px; 
   }  
+  
+  @keyframes scrollText {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
   
   .name-block {
     font-size: 24px;
     font-weight: 600;
-    margin-top: auto;      /* ? ГЋГЌГЋ Г‘ГЂГЊГЋ Г‘Г’ГЂГЌГ…Г’ Г‚ ГЌГ€Г‡ */
+    margin-top: auto;      /* ? ОНО САМО СТАНЕТ В НИЗ */
     margin-left: -5px;
   }
   
@@ -312,9 +342,9 @@
     border-radius: 50%;
     border: none;
     font-size: 12px;
-    display: flex;               /* ? ГЇГ®Г§ГўГ®Г«ГЁГІ Г¶ГҐГ­ГІГ°ГЁГ°Г®ГўГ ГІГј */
-    justify-content: center;     /* ? ГЈГ®Г°ГЁГ§Г®Г­ГІГ Г«ГјГ­Г® ГЇГ® Г¶ГҐГ­ГІГ°Гі */
-    align-items: center;         /* ? ГўГҐГ°ГІГЁГЄГ Г«ГјГ­Г® ГЇГ® Г¶ГҐГ­ГІГ°Гі */
+    display: flex;               /* ? позволит центрировать */
+    justify-content: center;     /* ? горизонтально по центру */
+    align-items: center;         /* ? вертикально по центру */
   }
   
   /* dots */
@@ -373,7 +403,7 @@
     justify-content: space-around;
     align-items: center;
     padding-bottom: 30px;
-    z-index: 9999;
+    z-index: 5000;
   }
   
   .bottom-nav .item {
@@ -399,15 +429,15 @@
   }
   
   .cards-slider::-webkit-scrollbar {
-    display: none; /* Г±ГЄГ°Г»ГІГј ГЇГ®Г«Г®Г±Гі ГЇГ°Г®ГЄГ°ГіГІГЄГЁ */
+    display: none; /* скрыть полосу прокрутки */
   }
   
   .card {
-    flex: 0 0 360px;  /* ГёГЁГ°ГЁГ­Г  ГЄГ Г°ГІГ®Г·ГЄГЁ */
+    flex: 0 0 360px;  /* ширина карточки */
     scroll-snap-align: center;
   }
 
-  /* ГЂГ­ГЁГ¬Г Г¶ГЁГї ГЄГ Г°ГІГ®Г·ГҐГЄ ГЇГ°ГЁ Г±ГўГ Г©ГЇГҐ, ГЄГ ГЄ Гў Г„ВіВї */
+  /* Анимация карточек при свайпе, как в Дії */
   .card {
     transition: transform 0.1s linear, opacity 0.1s linear;
     transform-origin: center center;
@@ -486,8 +516,8 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-content: center;
-    row-gap: 18px;      /* Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ Г¬ГҐГ¦Г¤Гі Г°ГїГ¤Г Г¬ГЁ ? ? */
-    column-gap: 30px;   /* Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ Г¬ГҐГ¦Г¤Гі Г±ГІГ®Г«ГЎГ¶Г Г¬ГЁ ? ? */
+    row-gap: 18px;      /* расстояние между рядами ? ? */
+    column-gap: 30px;   /* расстояние между столбцами ? ? */
 }
 
 .lock-pad button {
@@ -508,17 +538,17 @@
 }
 
 .lock-pad .del {
-    background: none;          /* ГіГЎГЁГ°Г ГҐГІ ГЄГ°ГіГЈ */
-    border: none;              /* ГЎГҐГ§ Г°Г Г¬ГЄГЁ */
-    box-shadow: none;          /* ГўГ¤Г°ГіГЈ Г¤Г®ГЎГ ГўГ«ГїГ«Г Г±Гј ГІГҐГ­Гј */
-    width: auto;               /* ГЄГ­Г®ГЇГЄГ  ГЇГ® Г°Г Г§Г¬ГҐГ°Гі Г±ГЁГ¬ГўГ®Г«Г  */
+    background: none;          /* убирает круг */
+    border: none;              /* без рамки */
+    box-shadow: none;          /* вдруг добавлялась тень */
+    width: auto;               /* кнопка по размеру символа */
     height: auto;
-    font-size: 32px;           /* Г°Г Г§Г¬ГҐГ° Г±ГЁГ¬ГўГ®Г«Г  */
-    padding: 0;                /* ГіГЎГЁГ°Г ГҐГ¬ ГўГ­ГіГІГ°ГҐГ­Г­ГЁГҐ Г®ГІГ±ГІГіГЇГ» */
+    font-size: 32px;           /* размер символа */
+    padding: 0;                /* убираем внутренние отступы */
 }
 
 .lock-pad .del:active {
-    opacity: 0.5;              /* Г­ГҐГЎГ®Г«ГјГёГ®Г© ГЅГґГґГҐГЄГІ Г­Г Г¦Г ГІГЁГї */
+    opacity: 0.5;              /* небольшой эффект нажатия */
 }
 
 
@@ -526,14 +556,14 @@
     font-size: 16px;
     color: #000000;
     opacity: 0.7;
-    margin-bottom: 35px;   /* Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ Г¤Г® Г­ГЁГ¦Г­ГҐГ© ГЈГ°Г Г­ГЁ ГЅГЄГ°Г Г­Г  */
+    margin-bottom: 35px;   /* расстояние до нижней грани экрана */
     text-align: center;
     user-select: none;
 }
 
 .lock-forgot {
     position: absolute;
-    bottom: 30px; /* Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ Г®ГІ Г­ГЁГ¦Г­ГҐГ© ГЈГ°Г Г­ГЁ ГЅГЄГ°Г Г­Г  */
+    bottom: 30px; /* расстояние от нижней грани экрана */
     left: 0;
     width: 100%;
     text-align: center;
@@ -543,7 +573,7 @@
     opacity: 0.6;
     user-select: none;
 
-    /* ГЂГ­ГЁГ¬Г Г¶ГЁГї */
+    /* Анимация */
     opacity: 0;
     transform: translateY(4px);
     animation: forgotFade 1s ease-out forwards;
@@ -564,8 +594,8 @@
 .menu-screen {
     position: fixed;
     inset: 0;
-    background: transparent;  /* ? ГґГ®Г­ ГІГҐГЇГҐГ°Гј ГІГ ГЄГ®Г© Г¦ГҐ ГЄГ ГЄ ГўГҐГ±Гј Г ГЇГЇ */
-    backdrop-filter: blur(18px); /* Г±Г«ГҐГЈГЄГ  Г°Г Г§Г¬Г»ГўГ ГҐГІ вЂ” ГЄГ ГЄ Гў Г„ВіВї */
+    background: transparent;  /* ? фон теперь такой же как весь апп */
+    backdrop-filter: blur(18px); /* слегка размывает — как в Дії */
     z-index: 9999;
     display: none;
     overflow-y: auto;
@@ -574,7 +604,7 @@
 
 
 
-/* Г‡Г ГЈГ®Г«Г®ГўГ®ГЄ */
+/* Заголовок */
 .menu-header {
     margin-bottom: 30px;
 }
@@ -590,14 +620,14 @@
     opacity: 0.7;
 }
 
-/* ГЃГ«Г®ГЄ Г± ГЇГіГ­ГЄГІГ Г¬ГЁ */
+/* Блок с пунктами */
 .menu-block {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* ГЋГ¤ГЁГ­ ГЇГіГ­ГЄГІ Г¬ГҐГ­Гѕ */
+/* Один пункт меню */
 .menu-item {
     background: white;
     padding: 17px;
@@ -611,15 +641,15 @@
 }
 
 .top-item {
-    border-radius: 15px; /* ГЁГ«ГЁ Г±ГЄГ®Г«ГјГЄГ® ГІГҐГЎГҐ Г­ГіГ¦Г­Г® */
-    box-shadow: 0 0 1px rgba(0,0,0,0.1); /* ГЄГ ГЄ Гі Г¤Г°ГіГЈГЁГµ */
+    border-radius: 15px; /* или сколько тебе нужно */
+    box-shadow: 0 0 1px rgba(0,0,0,0.1); /* как у других */
 }
 
 .menu-item img {
     width: 22px;
 }
 
-/* ГЉГ°Г Г±Г­Г Гї ГІГ®Г·ГЄГ  */
+/* Красная точка */
 .menu-dot {
     width: 10px;
     height: 10px;
@@ -629,21 +659,21 @@
     right: 18px;
 }
 
-/* ГЉГ­Г®ГЇГЄГ  ГўГ»ГµГ®Г¤ */
+/* Кнопка выход */
 .menu-exit {
     display: block;
-    width: 60%;           /* ГёГЁГ°ГЁГ­Г  ГЄГ­Г®ГЇГЄГЁ ? Г¬Г®Г¦Г­Г® Г¬ГҐГ­ГїГІГј */
-    max-width: 180px;     /* Г®ГЈГ°Г Г­ГЁГ·ГҐГ­ГЁГҐ Г·ГІГ®ГЎГ» Г­ГҐ ГЎГ»Г«Г  Г®ГЈГ°Г®Г¬Г­Г®Г© */
+    width: 60%;           /* ширина кнопки ? можно менять */
+    max-width: 180px;     /* ограничение чтобы не была огромной */
     background: black;
     color: white;
 
-    padding: 12px 0;      /* ГўГ»Г±Г®ГІГ  ГЄГ­Г®ГЇГЄГЁ */
+    padding: 12px 0;      /* высота кнопки */
     font-size: 18px;
     font-weight: 600;
     border: none;
     border-radius: 24px;
 
-    margin: 25px auto 0;  /* ? Г‚ГЋГ’ ГќГ’ГЋ Г„Г…Г‹ГЂГ…Г’ ГЏГЋ Г–Г…ГЌГ’ГђГ“ */
+    margin: 25px auto 0;  /* ? ВОТ ЭТО ДЕЛАЕТ ПО ЦЕНТРУ */
     margin-top: 45px;
     text-align: center;
 }
@@ -652,7 +682,7 @@
 .menu-group {
     background: white;
     border-radius: 15px;
-    overflow: hidden; /* Г·ГІГ®ГЎГ» Г§Г ГЄГ°ГіГЈГ«ГҐГ­ГЁГї Г°Г ГЎГ®ГІГ Г«ГЁ */
+    overflow: hidden; /* чтобы закругления работали */
     box-shadow: 0 0 2px rgba(0,0,0,0.1);
 }
 
@@ -667,15 +697,15 @@
 .tab-screen {
     position: absolute;
     inset: 0;
-    background: inherit;  /* ГґГ®Г­ ГІГ ГЄГ®Г© Г¦ГҐ, ГЄГ ГЄ Гі ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї */
+    background: inherit;  /* фон такой же, как у приложения */
     overflow-y: auto;
-    display: none; /* ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ Г±ГЄГ°Г»ГІГ® */
-    padding-bottom: 90px; /* Г¬ГҐГ±ГІГ® ГЇГ®Г¤ Г­Г ГўГЎГ Г° */
+    display: none; /* по умолчанию скрыто */
+    padding-bottom: 90px; /* место под навбар */
 }
 
 #tab-menu {
     padding: 30px 25px 120px; /* top | left/right | bottom */
-    z-index: 3001;  /* Г«ГѕГЎГ®Г© ГўГ»ГёГҐ swiper */
+    z-index: 3001;  /* любой выше swiper */
 }
 
 
@@ -683,14 +713,14 @@
     display: block;
 }
 
-/* ГЌГҐГўГЁГ¤ГЁГ¬Г»ГҐ ГЄГ Г°ГІГ®Г·ГЄГЁ Г¤Г«Гї ГЁГ¤ГҐГ Г«ГјГ­Г®ГЈГ® Г¶ГҐГ­ГІГ°ГЁГ°Г®ГўГ Г­ГЁГї */
+/* Невидимые карточки для идеального центрирования */
 .ghost-card {
     flex: 0 0 calc((100vw - 324px) / 2);
     pointer-events: none;
 }
 
-/* ===== Г‘ГҐГ°ГўВіГ±ГЁ: Г§Г ГЈГ®Г«Г®ГўГ®ГЄ ===== */
-/* Г‘Г¤ГҐГ«Г ГІГј Г°Г ГЎГ®Г·ГЁГ© Г®ГІГ±ГІГіГЇ ГЁ Г§Г ГЈГ®Г«Г®ГўГ®ГЄ ГЄГ®ГІГ®Г°Г»Г© Г¤ГҐГ°Г¦ГЁГІГ±Гї + Г Г¤Г ГЇГІГ Г¶ГЁГї ГЇГЁГЄГ±ГҐГ«ГјГ­Г Гї ГЁГ«ГЁ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ­Г Гї */
+/* ===== Сервіси: заголовок ===== */
+/* Сделать рабочий отступ и заголовок который держится + адаптация пиксельная или координатная */
 .services-header {
     position: sticky;
     top: 0;
@@ -703,7 +733,7 @@
     font-weight: 700;
 }
 
-/* ===== Г‘ГҐГ°ГўВіГ±ГЁ: ГЇГ®ГёГіГЄ ===== */
+/* ===== Сервіси: пошук ===== */
 .services-search {
     padding: 30px 25px 8px;
 }
@@ -721,7 +751,7 @@
     backdrop-filter: blur(12px);
 }
 
-/* ===== Г‘ГҐГІГЄГ  ГЄГ Г°ГІГ®Г·ГҐГЄ ===== */
+/* ===== Сетка карточек ===== */
 .services-grid {
     padding: 10px 25px 0;
     display: grid;
@@ -729,7 +759,7 @@
     gap: 8px;
 }
 
-/* ===== ГЉГ Г°ГІГ®Г·ГЄГ  Г±ГҐГ°ГўГЁГ±Г  ===== */
+/* ===== Карточка сервиса ===== */
 .service-card {
     background: rgba(255,255,255,0.55);
     backdrop-filter: blur(18px);
@@ -743,7 +773,7 @@
     justify-content: space-between;
 }
 
-/* Г€ГЄГ®Г­ГЄГ  Гў Г·ВёГ°Г­Г®Г¬ ГЄГ°ГіГЈГҐ */
+/* Иконка в чёрном круге */
 .service-icon {
     width: 30px;
     height: 30px;
@@ -760,7 +790,7 @@
     height: 22px;
 }
 
-/* Г’ГҐГЄГ±ГІ ГЇГ®Г¤ ГЁГЄГ®Г­ГЄГ®Г© */
+/* Текст под иконкой */
 .service-title {
     font-size: 13px;
     font-weight: 500;
@@ -768,33 +798,33 @@
 
 #tab-services {
     position: relative;
-    z-index: 3001; /* ГўГ»ГёГҐ ГІГ®Г·ГҐГЄ */
+    z-index: 3001; /* выше точек */
 }
 
 .signature img {
-  width: 80px;      /* ГёГЁГ°ГЁГ­Г  */
-  height: auto;      /* Г ГўГІГ®-ГўГ»Г±Г®ГІГ  Г± Г±Г®ГµГ°Г Г­ГҐГ­ГЁГҐГ¬ ГЇГ°Г®ГЇГ®Г°Г¶ГЁГ© */
-  display: block;    /* ГіГЎГЁГ°Г ГҐГІ Г«ГЁГёГ­ГЁГҐ Г®ГІГ±ГІГіГЇГ» */
+  width: 80px;      /* ширина */
+  height: auto;      /* авто-высота с сохранением пропорций */
+  display: block;    /* убирает лишние отступы */
   margin-left: 3px;
   margin-top: -15px;
 }
 
-/* ====== ERROR OVERLAY (ГїГЄ Гі Г„ВіВї) ====== */
+/* ====== ERROR OVERLAY (як у Дії) ====== */
 .error-overlay {
     position: fixed;
     inset: 0;
     z-index: 99999;
-    display: flex;              /* ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ Г±ГЄГ°Г»ГІГ® */
+    display: flex;              /* по умолчанию скрыто */
     justify-content: center;
     align-items: center;
     margin-bottom: 130px;
     /* backdrop-filter: blur(18px); */
-    opacity: 0;                 /* Г±ГЄГ°Г»ГІ ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ */
-    pointer-events: none;       /* Г·ГІГ®ГЎГ» Г­ГҐ ГЄГ«ГЁГЄГ ГЎГҐГ«ГҐГ­ */
-    transition: opacity 0.35s ease;   /* ГЇГ«Г ГўГ­Г»Г© fade */
+    opacity: 0;                 /* скрыт по умолчанию */
+    pointer-events: none;       /* чтобы не кликабелен */
+    transition: opacity 0.35s ease;   /* плавный fade */
 }
 
-/* Г ГЄГІГЁГўГ­Г®ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ вЂ“ ГўГЁГ¤Г­Г® */
+/* активное состояние – видно */
 .error-overlay.active {
     opacity: 1;
     pointer-events: auto;
@@ -818,26 +848,26 @@
 
 .error-emoji {
   font-size: 35px;
-  display: block;    /* ГіГЎГЁГ°Г ГҐГІ Г«ГЁГёГ­ГЁГҐ Г®ГІГ±ГІГіГЇГ» */
+  display: block;    /* убирает лишние отступы */
   margin-bottom: 14px;
 }
 
 .error-text {
-    font-size: 18px;          /* ГЄГ ГЄ ГІГ» ГЇГ°Г®Г±ГЁГ« */
+    font-size: 18px;          /* как ты просил */
     font-weight: 600;
     line-height: 1.3;
     margin-bottom: 20px;
 }
 
-/* ГЉГЌГЋГЏГЉГЂ */
+/* КНОПКА */
 .error-btn {
     width: 237px;
     height: 36px;
     border-radius: 18px;
 
     background-color: white;
-    color: rgb(0, 0, 0);          /* ? Г’Г…ГЉГ‘Г’ ГЃГ…Г‹Г›Г‰ */
-    border-radius: 18px;      /* ГЄГ ГЄ ГІГ» ГЇГ°Г®Г±ГЁГ« */
+    color: rgb(0, 0, 0);          /* ? ТЕКСТ БЕЛЫЙ */
+    border-radius: 18px;      /* как ты просил */
     border: 2px solid black;
     font-family: 'e-Ukraine';
     font-size: 18px;
@@ -850,7 +880,7 @@
     cursor: pointer;
 }
 
-/* ГЏГ®Г«Г­Г»Г© Г§Г ГЇГ°ГҐГІ ГўГ»Г¤ГҐГ«ГҐГ­ГЁГї ГІГҐГЄГ±ГІГ  */
+/* Полный запрет выделения текста */
 body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -872,7 +902,7 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
     padding-top: 120px;
     padding-bottom: 170px;
 
-    /* Г’Г®ГІ Г¦ГҐ ГЈГ°Г Г¤ГЁГҐГ­ГІ, Г·ГІГ® Гі ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї */
+    /* Тот же градиент, что у приложения */
     background:
         radial-gradient(
             circle at 82% 88%,
@@ -960,7 +990,7 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
     scale: 1;
 }
 
-/* CLOSE BUTTON (ГЄГ°ГҐГ±ГІГЁГЄ) */
+/* CLOSE BUTTON (крестик) */
 .dialog-close {
     position: absolute;
     right: 22px;
@@ -993,26 +1023,26 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
     background: white;
     color: black;  
     border-radius: 30px;
-    border: 2px solid black;  /* Г—ВЁГђГЌГЂГџ Г°Г Г¬ГЄГ  */
+    border: 2px solid black;  /* ЧЁРНАЯ рамка */
     padding: 14px 0;
     font-size: 18px;
     font-weight: 500;
     margin-top: 40px;
 }
 
-/* === Г†ГЋГ‚Г’ГЂ ГЃВІГѓГ“Г—ГЂ Г‘Г’ГђГЋГЉГЂ ГџГЉ Г“ Г„ВІВЇ === */
+/* === ЖОВТА БІГУЧА СТРОКА ЯК У ДІЇ === */
 .yellow-ticker {
     position: fixed;
-    bottom: 104px; /* Г°ВіГўГ­Г® Г­Г Г¤ navbar */
+    bottom: 104px; /* рівно над navbar */
     left: 0;
     width: 100%;
     height: 32px;
 
     background: #FFE24A;
     overflow: hidden;
-    display: none; /* ГЇГ°ГЁГµГ®ГўГ Г­Г® Г§Г  Г§Г Г¬Г®ГўГ·Г Г­Г­ГїГ¬ */
+    display: none; /* приховано за замовчанням */
 
-    z-index: 6000; /* Г§ГўГҐГ°ГµГі Г­Г Г¤ Г¤Г®ГЄГіГ¬ГҐГ­ГІГ Г¬ГЁ */
+    z-index: 6000; /* зверху над документами */
 }
 
 .yellow-ticker.show {
@@ -1021,7 +1051,7 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
 
 .ticker-scroll {
     display: flex;
-    animation: tickerMove 9s linear infinite; /* ?? Г¤Г®ГЎГ ГўГЁГ«ГЁ 25s */
+    animation: tickerMove 9s linear infinite; /* ?? добавили 25s */
     white-space: nowrap;
 }
 
@@ -1031,9 +1061,173 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
     line-height: 32px;
 }
 
-/* ГЂГ­ВіГ¬Г Г¶ВіГї */
+/* Анімація */
 @keyframes tickerMove {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
 }
 
+/* ===== BOTTOM SHEET OVERLAY ===== */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 9000;
+}
+
+.sheet-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===== BOTTOM SHEET ===== */
+/* контейнер */
+.doc-sheet {
+  position: fixed;
+  left: 50%;
+  bottom: -100%;
+  transform: translateX(-50%);
+  width: 398px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  transition: bottom 0.35s cubic-bezier(.22,.61,.36,1);
+  z-index: 10000;
+}
+
+.doc-sheet.show {
+  bottom: 20px; /* небольшой отступ от низа как в iOS */
+}
+
+/* ===== ВЕРХНИЙ БЛОК ===== */
+.sheet-main {
+  width: 398px;
+  height: 410px;
+
+  background: #fff;
+  border-radius: 24px;
+
+  padding: 12px 16px 6px;
+  overflow: hidden;
+}
+
+/* пункты */
+.sheet-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+
+  height: 56px;
+  font-size: 16px;
+  font-weight: 500;
+
+  margin-left: 25px;
+}
+
+.sheet-item::after {
+  content: "";
+  position: absolute;
+  left: -20px;        /* отступ слева */
+  right: 5px;        /* отступ справа */
+  bottom: 0;
+  height: 1px;       /* толщина */
+  background: rgba(0,0,0,0.08);
+}
+
+.sheet-item.no-divider::after {
+  display: none;
+}
+
+.sheet-item:last-child {
+  border-bottom: none;
+}
+
+.sheet-item img {
+  width: 22px;
+  height: 22px;
+}
+
+/* ===== НИЖНИЙ БЛОК ===== */
+.sheet-footer {
+  width: 398px;
+  height: 56px;
+
+  background: #fff;
+  border-radius: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.sheet-close {
+  width: 100%;
+  height: 100%;
+color: black;
+  border: none;
+  background: transparent;
+
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Полный разделитель перед QR / Штрихкод */
+.sheet-divider-full {
+  height: 1px;
+  width: 100%;
+
+  background: rgba(0,0,0,0.08);
+}
+
+
+/* ===== ACTION ROW ===== */
+.sheet-actions {
+  margin-top: auto;                 /* ?? прижимает к низу */
+  padding-top: 16px;
+  padding-bottom: 6px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
+
+/* одна кнопка */
+.sheet-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* круг с иконкой */
+.sheet-action img {
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+
+  background: #000;
+  border-radius: 50%;
+
+  filter: invert(1); /* если иконки чёрные */
+}
+
+/* убрать разделители между 3 последними пунктами */
+.sheet-item:nth-child(3),
+.sheet-item:nth-child(4),
+.sheet-item:nth-child(5) {
+  border-bottom: none;
+}

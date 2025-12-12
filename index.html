@@ -86,7 +86,9 @@
           <h1 class="card-title">єДокумент</h1>
 
           <div class="top-row">
-            <img src="img/facetop.png" alt="photo" class="avatar">
+            <div class="avatar-frame">
+              <img src="img/facetop.png" alt="photo" class="avatar">
+            </div>
 
             <div class="info">
               <p class="info-field">
@@ -159,7 +161,9 @@
             <h1 class="card-title">Паспорт громадянина України</h1>
         
             <div class="top-row">
-              <img src="img/facetop.png" class="avatar">
+              <div class="avatar-frame">
+                <img src="img/facetop.png" class="avatar">
+              </div>
               <div class="info">
                 <p class="info-field">
                 <span class="label">Дата народження:</span>
@@ -193,7 +197,9 @@
             <h1 class="card-title">Закордонний<br>паспорт</h1>
         
             <div class="top-row">
-              <img src="img/facetop.png" class="avatar">
+              <div class="avatar-frame">
+                <img src="img/facetop.png" class="avatar">
+              </div>
               <div class="info">
                 <p class="info-field">
                 <span class="label">Дата народження:</span>
@@ -579,15 +585,7 @@ function showTab(name) {
   for (const key in tabs) {
     tabs[key].classList.remove("active");
   }
-
   tabs[name].classList.add("active");
-
-  // ⏱️ ДАТИ DOM СТАТИ ВИДИМИМ
-  if (name === "docs") {
-    requestAnimationFrame(() => {
-      initStatusMarquee();
-    });
-  }
 }
 
 // навбар кнопки
@@ -655,7 +653,7 @@ window.addEventListener("load", () => {
 </div>
 
 <script>
-const menuBtns = document.querySelectorAll(".menu-btn"); // замени на свой селектор
+
 const dialog = document.getElementById("dialog");
 const overlay = document.getElementById("dialog-overlay");
 const closeBtn = document.querySelector(".dialog-close");
@@ -670,14 +668,6 @@ function closeDialog() {
     overlay.classList.remove("show");
     dialog.classList.remove("show");
 }
-
-menuBtns.forEach(btn => {
-    btn.addEventListener("click", function(e) {
-        e.stopPropagation(); // блокируем срабатывание карточки
-        e.preventDefault();  // отменяем любой старый обработчик
-        openDialog();        // показываем поп-ап
-    });
-});
 
 closeBtn.addEventListener("click", closeDialog);
 overlay.addEventListener("click", closeDialog); // закрытие по тапу вне окна
@@ -726,14 +716,13 @@ addDocBtn.addEventListener("click", () => {
     document.querySelectorAll(".status-updated .status-text").forEach(span => {
         span.textContent = text;
     });
-    
-    initStatusMarquee();
-    
 })();
 </script>
 
 <script>
-function initStatusMarquee() {
+function initStatusScroll() {
+  const SPEED = 40; // px/сек — ОДИНАКОВО ДЛЯ ВСЕХ
+
   document.querySelectorAll(".status").forEach(status => {
     const wrap = status.querySelector(".scroll-wrapper");
     if (!wrap) return;
@@ -741,28 +730,114 @@ function initStatusMarquee() {
     const spans = wrap.querySelectorAll(".status-text");
     if (spans.length < 2) return;
 
-    const textWidth = spans[0].offsetWidth;
-    if (textWidth === 0) return;
+    const text = spans[0];
 
-    const speed = 40; // px/sec (можеш міняти)
-    const duration = textWidth / speed;
+    // даём браузеру пересчитать размеры
+    requestAnimationFrame(() => {
+      const textWidth = text.offsetWidth;
 
-    wrap.style.animation = "none";
-    wrap.offsetHeight; // форсимо перерахунок
+      const distance = textWidth; // едем ровно длину одного текста
+      const duration = distance / SPEED;
 
-    wrap.style.animation = `marquee ${duration}s linear infinite`;
+      wrap.style.animation = `scrollText ${duration}s linear infinite`;
+    });
   });
 }
 
-// keyframes через JS
-const style = document.createElement("style");
-style.textContent = `
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-100%); }
-}`;
-document.head.appendChild(style);
+// ⚠️ ВАЖНО: запуск ПОСЛЕ подстановки текста
+window.addEventListener("load", initStatusScroll);
 </script>
+
+<!-- ===== DOCUMENT ACTIONS SHEET ===== -->
+<div id="sheetOverlay" class="sheet-overlay"></div>
+
+<div id="docSheet" class="doc-sheet">
+
+  <!-- ВЕРХНИЙ ПРЯМОУГОЛЬНИК -->
+  <div class="sheet-main">
+
+    <div class="sheet-item">
+      <img src="img/menu/info.svg">
+      <span>Повна інформація</span>
+    </div>
+
+    <div class="sheet-item">
+      <img src="img/menu/location.svg">
+      <span>Витяг про місце проживання</span>
+    </div>
+
+    <div class="sheet-item no-divider">
+      <img src="img/menu/star.svg">
+      <span>Оцінити документ</span>
+    </div>
+
+    <div class="sheet-item danger no-divider" id="reorderDocsBtn">
+      <img src="img/menu/swap.svg">
+      <span>Змінити порядок документів</span>
+    </div>
+
+    <div class="sheet-item no-divider">
+      <img src="img/menu/help.svg">
+      <span>Питання та відповіді</span>
+    </div>
+
+    <div class="sheet-divider-full"></div>
+
+<!-- ACTION BUTTONS (QR / BARCODE) -->
+<div class="sheet-actions">
+  <div class="sheet-action">
+    <img src="img/menu/qr.svg" alt="">
+    <span>QR-код</span>
+  </div>
+
+  <div class="sheet-action">
+    <img src="img/menu/barcode.svg" alt="">
+    <span>Штрихкод</span>
+  </div>
+</div>
+
+
+  </div>
+
+  <!-- НИЖНИЙ ПРЯМОУГОЛЬНИК -->
+  <div class="sheet-footer">
+    <button class="sheet-close">Закрити</button>
+  </div>
+
+</div>
+
+
+<script>
+const sheet = document.getElementById("docSheet");
+const sheetOverlay = document.getElementById("sheetOverlay");
+const reorderBtn = document.getElementById("reorderDocsBtn");
+const closeSheetBtn = document.querySelector(".sheet-close");
+
+// открытие по ТРЁМ ТОЧКАМ
+document.querySelectorAll(".menu-btn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    sheet.classList.add("show");
+    sheetOverlay.classList.add("show");
+  });
+});
+
+// закрытие
+function closeSheet() {
+  sheet.classList.remove("show");
+  sheetOverlay.classList.remove("show");
+}
+
+sheetOverlay.addEventListener("click", closeSheet);
+closeSheetBtn.addEventListener("click", closeSheet);
+
+// 🔥 кнопка "Змінити порядок документів"
+reorderBtn.addEventListener("click", () => {
+  closeSheet();
+  openDialog(); // ТВОЯ существующая ошибка
+});
+</script>
+
 
 </body>
 </html>
