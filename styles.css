@@ -17,7 +17,7 @@
     font-family: 'e-Ukraine', sans-serif;
 
     height: 100%;
-    overflow: hidden; /* ? запрещает прокрутку */
+    overflow: hidden; /* ? Г§Г ГЇГ°ГҐГ№Г ГҐГІ ГЇГ°Г®ГЄГ°ГіГІГЄГі */
   }
 
 .diia-bg {
@@ -26,7 +26,7 @@
     overflow: hidden;
 
     background:
-        /* большое светлое пятно внизу справа */
+        /* ГЎГ®Г«ГјГёГ®ГҐ Г±ГўГҐГІГ«Г®ГҐ ГЇГїГІГ­Г® ГўГ­ГЁГ§Гі Г±ГЇГ°Г ГўГ  */
         radial-gradient(
             circle at 82% 88%,
             rgba(218, 238, 217, 0.90) 0%,
@@ -35,7 +35,7 @@
             rgba(218, 238, 217, 0.00) 80%
         ),
 
-        /* общий голубой вертикальный градиент */
+        /* Г®ГЎГ№ГЁГ© ГЈГ®Г«ГіГЎГ®Г© ГўГҐГ°ГІГЁГЄГ Г«ГјГ­Г»Г© ГЈГ°Г Г¤ГЁГҐГ­ГІ */
         linear-gradient(
             to bottom,
             #81bee9 0%,
@@ -60,7 +60,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-bottom: 80px; /* место под навбар */
+    padding-bottom: 80px; /* Г¬ГҐГ±ГІГ® ГЇГ®Г¤ Г­Г ГўГЎГ Г° */
     position: relative;
     overflow: hidden;
   }
@@ -76,7 +76,7 @@
     animation: gradientShift 38s ease infinite;
   }
   
-    /* всё содержимое поверх */
+    /* ГўГ±Вё Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ ГЇГ®ГўГҐГ°Гµ */
     .screen > * {
         position: relative;
         z-index: 1;
@@ -98,10 +98,10 @@
     padding: 24px;
     margin: 86px 0 0;
     position: relative;
-    flex: 0 0 355px !important;     /* ширина в слайдере */
+    flex: 0 0 355px !important;     /* ГёГЁГ°ГЁГ­Г  Гў Г±Г«Г Г©Г¤ГҐГ°ГҐ */
     scroll-snap-align: center;
-    display: flex;            /* ВАЖНО */
-    flex-direction: column;   /* ВАЖНО */
+    display: flex;            /* Г‚ГЂГ†ГЌГЋ */
+    flex-direction: column;   /* Г‚ГЂГ†ГЌГЋ */
     will-change: transform;
   }
   
@@ -113,9 +113,9 @@
     margin-left: -5px;
   }
   
-  /* Контейнер страницы-карточки (обе кнопки внутри) */
+  /* ГЉГ®Г­ГІГҐГ©Г­ГҐГ° Г±ГІГ°Г Г­ГЁГ¶Г»-ГЄГ Г°ГІГ®Г·ГЄГЁ (Г®ГЎГҐ ГЄГ­Г®ГЇГЄГЁ ГўГ­ГіГІГ°ГЁ) */
 .actions-card {
-    flex: 0 0 360px;       /* как обычная страница */
+    flex: 0 0 360px;       /* ГЄГ ГЄ Г®ГЎГ»Г·Г­Г Гї Г±ГІГ°Г Г­ГЁГ¶Г  */
     scroll-snap-align: center;
 
     display: flex;
@@ -123,18 +123,18 @@
     justify-content: center;
     gap: 9px;
 
-    background: transparent !important; /* УБИРАЕМ ФОН */
+    background: transparent !important; /* Г“ГЃГ€ГђГЂГ…ГЊ Г”ГЋГЌ */
     backdrop-filter: none !important;
 
-    height: 541px; /* ровно как другие страницы */
+    height: 541px; /* Г°Г®ГўГ­Г® ГЄГ ГЄ Г¤Г°ГіГЈГЁГҐ Г±ГІГ°Г Г­ГЁГ¶Г» */
     padding: 0;
-    margin-top: 86px; /* как у остальных карточек */
+    margin-top: 86px; /* ГЄГ ГЄ Гі Г®Г±ГІГ Г«ГјГ­Г»Гµ ГЄГ Г°ГІГ®Г·ГҐГЄ */
 }
 
 
-/* Кнопочные карточки */
+/* ГЉГ­Г®ГЇГ®Г·Г­Г»ГҐ ГЄГ Г°ГІГ®Г·ГЄГЁ */
 .action-btn {
-    height: 267px;    /* уменьшил на 10px чтобы красиво вставало */
+    height: 267px;    /* ГіГ¬ГҐГ­ГјГёГЁГ« Г­Г  10px Г·ГІГ®ГЎГ» ГЄГ°Г Г±ГЁГўГ® ГўГ±ГІГ ГўГ Г«Г® */
     width: 100%;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(20px);
@@ -148,12 +148,12 @@
     text-align: center;
 }
 
-/* Верхняя карточка — сильно скругляем сверху */
+/* Г‚ГҐГ°ГµГ­ГїГї ГЄГ Г°ГІГ®Г·ГЄГ  вЂ” Г±ГЁГ«ГјГ­Г® Г±ГЄГ°ГіГЈГ«ГїГҐГ¬ Г±ГўГҐГ°ГµГі */
 .add-doc {
     border-radius: 25px 25px 17px 17px;
 }
 
-/* Нижняя карточка — сильно скругляем снизу */
+/* ГЌГЁГ¦Г­ГїГї ГЄГ Г°ГІГ®Г·ГЄГ  вЂ” Г±ГЁГ«ГјГ­Г® Г±ГЄГ°ГіГЈГ«ГїГҐГ¬ Г±Г­ГЁГ§Гі */
 .reorder-docs {
     border-radius: 17px 17px 25px 25px;
 }
@@ -162,7 +162,7 @@
     width: 32px;
     height: 32px;
     margin-bottom: 12px;
-    filter: invert(1); /* 0 — чёрный, 1 — белый */
+    filter: invert(1); /* 0 вЂ” Г·ВёГ°Г­Г»Г©, 1 вЂ” ГЎГҐГ«Г»Г© */
 }
 
 .action-btn p {
@@ -189,18 +189,18 @@
   width: 70px;
     font-size: 13px;
     margin: 0 0 8px 0;
-    line-height: 1.5; /* нормальная плотность текста */
+    line-height: 1.5; /* Г­Г®Г°Г¬Г Г«ГјГ­Г Гї ГЇГ«Г®ГІГ­Г®Г±ГІГј ГІГҐГЄГ±ГІГ  */
     margin-bottom: 16px;
     margin-left: 5px;
 }
 
 .info-field .label,
 .info-field .value {
-    display: block; /* ставим одну под одной */
+    display: block; /* Г±ГІГ ГўГЁГ¬ Г®Г¤Г­Гі ГЇГ®Г¤ Г®Г¤Г­Г®Г© */
 }
 
 .info-field .label {
-    margin-bottom: 4px; /* ? регулируешь расстояние вручную! */
+    margin-bottom: 4px; /* ? Г°ГҐГЈГіГ«ГЁГ°ГіГҐГёГј Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ ГўГ°ГіГ·Г­ГіГѕ! */
 }
 
 .tax-card .card-title {
@@ -232,7 +232,7 @@
     font-size: 13px;
     font-weight: 600;
     line-height: 1.5;
-    margin-bottom: 140px; /* чтобы отодвинуть к зеленой полосе, как в Дії */
+    margin-bottom: 140px; /* Г·ГІГ®ГЎГ» Г®ГІГ®Г¤ГўГЁГ­ГіГІГј ГЄ Г§ГҐГ«ГҐГ­Г®Г© ГЇГ®Г«Г®Г±ГҐ, ГЄГ ГЄ Гў Г„ВіВї */
 }
 
 .tax-card .info-block .label {
@@ -251,7 +251,7 @@
 
 .tax-card .status {
     left: 0;
-    bottom: 95px; /* как на твоём скрине – чуть выше номера */
+    bottom: 95px; /* ГЄГ ГЄ Г­Г  ГІГўГ®ВёГ¬ Г±ГЄГ°ГЁГ­ГҐ вЂ“ Г·ГіГІГј ГўГ»ГёГҐ Г­Г®Г¬ГҐГ°Г  */
 }
 
 .tax-card .menu-btn {
@@ -262,7 +262,7 @@
   .status {
     position: absolute;
     left: 0;
-    bottom: 125px;       /* ? корректно по макету */
+    bottom: 125px;       /* ? ГЄГ®Г°Г°ГҐГЄГІГ­Г® ГЇГ® Г¬Г ГЄГҐГІГі */
     width: 100%;
     height: 32px;
     background: linear-gradient(90deg, #A5ED99 0%, #90D0CF 100%);
@@ -272,20 +272,20 @@
     border-radius: 0px;
     display: flex;
     align-items: center;
-    overflow: hidden;       /* <— ВАЖНО */
+    overflow: hidden;       /* <вЂ” Г‚ГЂГ†ГЌГЋ */
   }
 
 .scroll-wrapper {
-    display: flex;
-    animation: scrollText linear infinite;
+  display: flex;
+  will-change: transform;
 }
 
   
   .status-text {
-    padding-right: 0px;      /* расстояние между копиями */
+    padding-right: 0px;      /* Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ Г¬ГҐГ¦Г¤Гі ГЄГ®ГЇГЁГїГ¬ГЁ */
     white-space: nowrap;
     font-size: 13px;
-    line-height: 32px;     /* фиксируем */
+    line-height: 32px;     /* ГґГЁГЄГ±ГЁГ°ГіГҐГ¬ */
     height: 32px; 
   }  
   
@@ -301,7 +301,7 @@
   .name-block {
     font-size: 24px;
     font-weight: 600;
-    margin-top: auto;      /* ? ОНО САМО СТАНЕТ В НИЗ */
+    margin-top: auto;      /* ? ГЋГЌГЋ Г‘ГЂГЊГЋ Г‘Г’ГЂГЌГ…Г’ Г‚ ГЌГ€Г‡ */
     margin-left: -5px;
   }
   
@@ -316,9 +316,9 @@
     border-radius: 50%;
     border: none;
     font-size: 12px;
-    display: flex;               /* ? позволит центрировать */
-    justify-content: center;     /* ? горизонтально по центру */
-    align-items: center;         /* ? вертикально по центру */
+    display: flex;               /* ? ГЇГ®Г§ГўГ®Г«ГЁГІ Г¶ГҐГ­ГІГ°ГЁГ°Г®ГўГ ГІГј */
+    justify-content: center;     /* ? ГЈГ®Г°ГЁГ§Г®Г­ГІГ Г«ГјГ­Г® ГЇГ® Г¶ГҐГ­ГІГ°Гі */
+    align-items: center;         /* ? ГўГҐГ°ГІГЁГЄГ Г«ГјГ­Г® ГЇГ® Г¶ГҐГ­ГІГ°Гі */
   }
   
   /* dots */
@@ -403,15 +403,15 @@
   }
   
   .cards-slider::-webkit-scrollbar {
-    display: none; /* скрыть полосу прокрутки */
+    display: none; /* Г±ГЄГ°Г»ГІГј ГЇГ®Г«Г®Г±Гі ГЇГ°Г®ГЄГ°ГіГІГЄГЁ */
   }
   
   .card {
-    flex: 0 0 360px;  /* ширина карточки */
+    flex: 0 0 360px;  /* ГёГЁГ°ГЁГ­Г  ГЄГ Г°ГІГ®Г·ГЄГЁ */
     scroll-snap-align: center;
   }
 
-  /* Анимация карточек при свайпе, как в Дії */
+  /* ГЂГ­ГЁГ¬Г Г¶ГЁГї ГЄГ Г°ГІГ®Г·ГҐГЄ ГЇГ°ГЁ Г±ГўГ Г©ГЇГҐ, ГЄГ ГЄ Гў Г„ВіВї */
   .card {
     transition: transform 0.1s linear, opacity 0.1s linear;
     transform-origin: center center;
@@ -490,8 +490,8 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-content: center;
-    row-gap: 18px;      /* расстояние между рядами ? ? */
-    column-gap: 30px;   /* расстояние между столбцами ? ? */
+    row-gap: 18px;      /* Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ Г¬ГҐГ¦Г¤Гі Г°ГїГ¤Г Г¬ГЁ ? ? */
+    column-gap: 30px;   /* Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ Г¬ГҐГ¦Г¤Гі Г±ГІГ®Г«ГЎГ¶Г Г¬ГЁ ? ? */
 }
 
 .lock-pad button {
@@ -512,17 +512,17 @@
 }
 
 .lock-pad .del {
-    background: none;          /* убирает круг */
-    border: none;              /* без рамки */
-    box-shadow: none;          /* вдруг добавлялась тень */
-    width: auto;               /* кнопка по размеру символа */
+    background: none;          /* ГіГЎГЁГ°Г ГҐГІ ГЄГ°ГіГЈ */
+    border: none;              /* ГЎГҐГ§ Г°Г Г¬ГЄГЁ */
+    box-shadow: none;          /* ГўГ¤Г°ГіГЈ Г¤Г®ГЎГ ГўГ«ГїГ«Г Г±Гј ГІГҐГ­Гј */
+    width: auto;               /* ГЄГ­Г®ГЇГЄГ  ГЇГ® Г°Г Г§Г¬ГҐГ°Гі Г±ГЁГ¬ГўГ®Г«Г  */
     height: auto;
-    font-size: 32px;           /* размер символа */
-    padding: 0;                /* убираем внутренние отступы */
+    font-size: 32px;           /* Г°Г Г§Г¬ГҐГ° Г±ГЁГ¬ГўГ®Г«Г  */
+    padding: 0;                /* ГіГЎГЁГ°Г ГҐГ¬ ГўГ­ГіГІГ°ГҐГ­Г­ГЁГҐ Г®ГІГ±ГІГіГЇГ» */
 }
 
 .lock-pad .del:active {
-    opacity: 0.5;              /* небольшой эффект нажатия */
+    opacity: 0.5;              /* Г­ГҐГЎГ®Г«ГјГёГ®Г© ГЅГґГґГҐГЄГІ Г­Г Г¦Г ГІГЁГї */
 }
 
 
@@ -530,14 +530,14 @@
     font-size: 16px;
     color: #000000;
     opacity: 0.7;
-    margin-bottom: 35px;   /* расстояние до нижней грани экрана */
+    margin-bottom: 35px;   /* Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ Г¤Г® Г­ГЁГ¦Г­ГҐГ© ГЈГ°Г Г­ГЁ ГЅГЄГ°Г Г­Г  */
     text-align: center;
     user-select: none;
 }
 
 .lock-forgot {
     position: absolute;
-    bottom: 30px; /* расстояние от нижней грани экрана */
+    bottom: 30px; /* Г°Г Г±Г±ГІГ®ГїГ­ГЁГҐ Г®ГІ Г­ГЁГ¦Г­ГҐГ© ГЈГ°Г Г­ГЁ ГЅГЄГ°Г Г­Г  */
     left: 0;
     width: 100%;
     text-align: center;
@@ -547,7 +547,7 @@
     opacity: 0.6;
     user-select: none;
 
-    /* Анимация */
+    /* ГЂГ­ГЁГ¬Г Г¶ГЁГї */
     opacity: 0;
     transform: translateY(4px);
     animation: forgotFade 1s ease-out forwards;
@@ -568,8 +568,8 @@
 .menu-screen {
     position: fixed;
     inset: 0;
-    background: transparent;  /* ? фон теперь такой же как весь апп */
-    backdrop-filter: blur(18px); /* слегка размывает — как в Дії */
+    background: transparent;  /* ? ГґГ®Г­ ГІГҐГЇГҐГ°Гј ГІГ ГЄГ®Г© Г¦ГҐ ГЄГ ГЄ ГўГҐГ±Гј Г ГЇГЇ */
+    backdrop-filter: blur(18px); /* Г±Г«ГҐГЈГЄГ  Г°Г Г§Г¬Г»ГўГ ГҐГІ вЂ” ГЄГ ГЄ Гў Г„ВіВї */
     z-index: 9999;
     display: none;
     overflow-y: auto;
@@ -578,7 +578,7 @@
 
 
 
-/* Заголовок */
+/* Г‡Г ГЈГ®Г«Г®ГўГ®ГЄ */
 .menu-header {
     margin-bottom: 30px;
 }
@@ -594,14 +594,14 @@
     opacity: 0.7;
 }
 
-/* Блок с пунктами */
+/* ГЃГ«Г®ГЄ Г± ГЇГіГ­ГЄГІГ Г¬ГЁ */
 .menu-block {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Один пункт меню */
+/* ГЋГ¤ГЁГ­ ГЇГіГ­ГЄГІ Г¬ГҐГ­Гѕ */
 .menu-item {
     background: white;
     padding: 17px;
@@ -615,15 +615,15 @@
 }
 
 .top-item {
-    border-radius: 15px; /* или сколько тебе нужно */
-    box-shadow: 0 0 1px rgba(0,0,0,0.1); /* как у других */
+    border-radius: 15px; /* ГЁГ«ГЁ Г±ГЄГ®Г«ГјГЄГ® ГІГҐГЎГҐ Г­ГіГ¦Г­Г® */
+    box-shadow: 0 0 1px rgba(0,0,0,0.1); /* ГЄГ ГЄ Гі Г¤Г°ГіГЈГЁГµ */
 }
 
 .menu-item img {
     width: 22px;
 }
 
-/* Красная точка */
+/* ГЉГ°Г Г±Г­Г Гї ГІГ®Г·ГЄГ  */
 .menu-dot {
     width: 10px;
     height: 10px;
@@ -633,21 +633,21 @@
     right: 18px;
 }
 
-/* Кнопка выход */
+/* ГЉГ­Г®ГЇГЄГ  ГўГ»ГµГ®Г¤ */
 .menu-exit {
     display: block;
-    width: 60%;           /* ширина кнопки ? можно менять */
-    max-width: 180px;     /* ограничение чтобы не была огромной */
+    width: 60%;           /* ГёГЁГ°ГЁГ­Г  ГЄГ­Г®ГЇГЄГЁ ? Г¬Г®Г¦Г­Г® Г¬ГҐГ­ГїГІГј */
+    max-width: 180px;     /* Г®ГЈГ°Г Г­ГЁГ·ГҐГ­ГЁГҐ Г·ГІГ®ГЎГ» Г­ГҐ ГЎГ»Г«Г  Г®ГЈГ°Г®Г¬Г­Г®Г© */
     background: black;
     color: white;
 
-    padding: 12px 0;      /* высота кнопки */
+    padding: 12px 0;      /* ГўГ»Г±Г®ГІГ  ГЄГ­Г®ГЇГЄГЁ */
     font-size: 18px;
     font-weight: 600;
     border: none;
     border-radius: 24px;
 
-    margin: 25px auto 0;  /* ? ВОТ ЭТО ДЕЛАЕТ ПО ЦЕНТРУ */
+    margin: 25px auto 0;  /* ? Г‚ГЋГ’ ГќГ’ГЋ Г„Г…Г‹ГЂГ…Г’ ГЏГЋ Г–Г…ГЌГ’ГђГ“ */
     margin-top: 45px;
     text-align: center;
 }
@@ -656,7 +656,7 @@
 .menu-group {
     background: white;
     border-radius: 15px;
-    overflow: hidden; /* чтобы закругления работали */
+    overflow: hidden; /* Г·ГІГ®ГЎГ» Г§Г ГЄГ°ГіГЈГ«ГҐГ­ГЁГї Г°Г ГЎГ®ГІГ Г«ГЁ */
     box-shadow: 0 0 2px rgba(0,0,0,0.1);
 }
 
@@ -671,15 +671,15 @@
 .tab-screen {
     position: absolute;
     inset: 0;
-    background: inherit;  /* фон такой же, как у приложения */
+    background: inherit;  /* ГґГ®Г­ ГІГ ГЄГ®Г© Г¦ГҐ, ГЄГ ГЄ Гі ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї */
     overflow-y: auto;
-    display: none; /* по умолчанию скрыто */
-    padding-bottom: 90px; /* место под навбар */
+    display: none; /* ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ Г±ГЄГ°Г»ГІГ® */
+    padding-bottom: 90px; /* Г¬ГҐГ±ГІГ® ГЇГ®Г¤ Г­Г ГўГЎГ Г° */
 }
 
 #tab-menu {
     padding: 30px 25px 120px; /* top | left/right | bottom */
-    z-index: 3001;  /* любой выше swiper */
+    z-index: 3001;  /* Г«ГѕГЎГ®Г© ГўГ»ГёГҐ swiper */
 }
 
 
@@ -687,14 +687,14 @@
     display: block;
 }
 
-/* Невидимые карточки для идеального центрирования */
+/* ГЌГҐГўГЁГ¤ГЁГ¬Г»ГҐ ГЄГ Г°ГІГ®Г·ГЄГЁ Г¤Г«Гї ГЁГ¤ГҐГ Г«ГјГ­Г®ГЈГ® Г¶ГҐГ­ГІГ°ГЁГ°Г®ГўГ Г­ГЁГї */
 .ghost-card {
     flex: 0 0 calc((100vw - 324px) / 2);
     pointer-events: none;
 }
 
-/* ===== Сервіси: заголовок ===== */
-/* Сделать рабочий отступ и заголовок который держится + адаптация пиксельная или координатная */
+/* ===== Г‘ГҐГ°ГўВіГ±ГЁ: Г§Г ГЈГ®Г«Г®ГўГ®ГЄ ===== */
+/* Г‘Г¤ГҐГ«Г ГІГј Г°Г ГЎГ®Г·ГЁГ© Г®ГІГ±ГІГіГЇ ГЁ Г§Г ГЈГ®Г«Г®ГўГ®ГЄ ГЄГ®ГІГ®Г°Г»Г© Г¤ГҐГ°Г¦ГЁГІГ±Гї + Г Г¤Г ГЇГІГ Г¶ГЁГї ГЇГЁГЄГ±ГҐГ«ГјГ­Г Гї ГЁГ«ГЁ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ­Г Гї */
 .services-header {
     position: sticky;
     top: 0;
@@ -707,7 +707,7 @@
     font-weight: 700;
 }
 
-/* ===== Сервіси: пошук ===== */
+/* ===== Г‘ГҐГ°ГўВіГ±ГЁ: ГЇГ®ГёГіГЄ ===== */
 .services-search {
     padding: 30px 25px 8px;
 }
@@ -725,7 +725,7 @@
     backdrop-filter: blur(12px);
 }
 
-/* ===== Сетка карточек ===== */
+/* ===== Г‘ГҐГІГЄГ  ГЄГ Г°ГІГ®Г·ГҐГЄ ===== */
 .services-grid {
     padding: 10px 25px 0;
     display: grid;
@@ -733,7 +733,7 @@
     gap: 8px;
 }
 
-/* ===== Карточка сервиса ===== */
+/* ===== ГЉГ Г°ГІГ®Г·ГЄГ  Г±ГҐГ°ГўГЁГ±Г  ===== */
 .service-card {
     background: rgba(255,255,255,0.55);
     backdrop-filter: blur(18px);
@@ -747,7 +747,7 @@
     justify-content: space-between;
 }
 
-/* Иконка в чёрном круге */
+/* Г€ГЄГ®Г­ГЄГ  Гў Г·ВёГ°Г­Г®Г¬ ГЄГ°ГіГЈГҐ */
 .service-icon {
     width: 30px;
     height: 30px;
@@ -764,7 +764,7 @@
     height: 22px;
 }
 
-/* Текст под иконкой */
+/* Г’ГҐГЄГ±ГІ ГЇГ®Г¤ ГЁГЄГ®Г­ГЄГ®Г© */
 .service-title {
     font-size: 13px;
     font-weight: 500;
@@ -772,33 +772,33 @@
 
 #tab-services {
     position: relative;
-    z-index: 3001; /* выше точек */
+    z-index: 3001; /* ГўГ»ГёГҐ ГІГ®Г·ГҐГЄ */
 }
 
 .signature img {
-  width: 80px;      /* ширина */
-  height: auto;      /* авто-высота с сохранением пропорций */
-  display: block;    /* убирает лишние отступы */
+  width: 80px;      /* ГёГЁГ°ГЁГ­Г  */
+  height: auto;      /* Г ГўГІГ®-ГўГ»Г±Г®ГІГ  Г± Г±Г®ГµГ°Г Г­ГҐГ­ГЁГҐГ¬ ГЇГ°Г®ГЇГ®Г°Г¶ГЁГ© */
+  display: block;    /* ГіГЎГЁГ°Г ГҐГІ Г«ГЁГёГ­ГЁГҐ Г®ГІГ±ГІГіГЇГ» */
   margin-left: 3px;
   margin-top: -15px;
 }
 
-/* ====== ERROR OVERLAY (як у Дії) ====== */
+/* ====== ERROR OVERLAY (ГїГЄ Гі Г„ВіВї) ====== */
 .error-overlay {
     position: fixed;
     inset: 0;
     z-index: 99999;
-    display: flex;              /* по умолчанию скрыто */
+    display: flex;              /* ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ Г±ГЄГ°Г»ГІГ® */
     justify-content: center;
     align-items: center;
     margin-bottom: 130px;
     /* backdrop-filter: blur(18px); */
-    opacity: 0;                 /* скрыт по умолчанию */
-    pointer-events: none;       /* чтобы не кликабелен */
-    transition: opacity 0.35s ease;   /* плавный fade */
+    opacity: 0;                 /* Г±ГЄГ°Г»ГІ ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ */
+    pointer-events: none;       /* Г·ГІГ®ГЎГ» Г­ГҐ ГЄГ«ГЁГЄГ ГЎГҐГ«ГҐГ­ */
+    transition: opacity 0.35s ease;   /* ГЇГ«Г ГўГ­Г»Г© fade */
 }
 
-/* активное состояние – видно */
+/* Г ГЄГІГЁГўГ­Г®ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ вЂ“ ГўГЁГ¤Г­Г® */
 .error-overlay.active {
     opacity: 1;
     pointer-events: auto;
@@ -822,26 +822,26 @@
 
 .error-emoji {
   font-size: 35px;
-  display: block;    /* убирает лишние отступы */
+  display: block;    /* ГіГЎГЁГ°Г ГҐГІ Г«ГЁГёГ­ГЁГҐ Г®ГІГ±ГІГіГЇГ» */
   margin-bottom: 14px;
 }
 
 .error-text {
-    font-size: 18px;          /* как ты просил */
+    font-size: 18px;          /* ГЄГ ГЄ ГІГ» ГЇГ°Г®Г±ГЁГ« */
     font-weight: 600;
     line-height: 1.3;
     margin-bottom: 20px;
 }
 
-/* КНОПКА */
+/* ГЉГЌГЋГЏГЉГЂ */
 .error-btn {
     width: 237px;
     height: 36px;
     border-radius: 18px;
 
     background-color: white;
-    color: rgb(0, 0, 0);          /* ? ТЕКСТ БЕЛЫЙ */
-    border-radius: 18px;      /* как ты просил */
+    color: rgb(0, 0, 0);          /* ? Г’Г…ГЉГ‘Г’ ГЃГ…Г‹Г›Г‰ */
+    border-radius: 18px;      /* ГЄГ ГЄ ГІГ» ГЇГ°Г®Г±ГЁГ« */
     border: 2px solid black;
     font-family: 'e-Ukraine';
     font-size: 18px;
@@ -854,7 +854,7 @@
     cursor: pointer;
 }
 
-/* Полный запрет выделения текста */
+/* ГЏГ®Г«Г­Г»Г© Г§Г ГЇГ°ГҐГІ ГўГ»Г¤ГҐГ«ГҐГ­ГЁГї ГІГҐГЄГ±ГІГ  */
 body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -876,7 +876,7 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
     padding-top: 120px;
     padding-bottom: 170px;
 
-    /* Тот же градиент, что у приложения */
+    /* Г’Г®ГІ Г¦ГҐ ГЈГ°Г Г¤ГЁГҐГ­ГІ, Г·ГІГ® Гі ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї */
     background:
         radial-gradient(
             circle at 82% 88%,
@@ -964,7 +964,7 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
     scale: 1;
 }
 
-/* CLOSE BUTTON (крестик) */
+/* CLOSE BUTTON (ГЄГ°ГҐГ±ГІГЁГЄ) */
 .dialog-close {
     position: absolute;
     right: 22px;
@@ -997,26 +997,26 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
     background: white;
     color: black;  
     border-radius: 30px;
-    border: 2px solid black;  /* ЧЁРНАЯ рамка */
+    border: 2px solid black;  /* Г—ВЁГђГЌГЂГџ Г°Г Г¬ГЄГ  */
     padding: 14px 0;
     font-size: 18px;
     font-weight: 500;
     margin-top: 40px;
 }
 
-/* === ЖОВТА БІГУЧА СТРОКА ЯК У ДІЇ === */
+/* === Г†ГЋГ‚Г’ГЂ ГЃВІГѓГ“Г—ГЂ Г‘Г’ГђГЋГЉГЂ ГџГЉ Г“ Г„ВІВЇ === */
 .yellow-ticker {
     position: fixed;
-    bottom: 104px; /* рівно над navbar */
+    bottom: 104px; /* Г°ВіГўГ­Г® Г­Г Г¤ navbar */
     left: 0;
     width: 100%;
     height: 32px;
 
     background: #FFE24A;
     overflow: hidden;
-    display: none; /* приховано за замовчанням */
+    display: none; /* ГЇГ°ГЁГµГ®ГўГ Г­Г® Г§Г  Г§Г Г¬Г®ГўГ·Г Г­Г­ГїГ¬ */
 
-    z-index: 6000; /* зверху над документами */
+    z-index: 6000; /* Г§ГўГҐГ°ГµГі Г­Г Г¤ Г¤Г®ГЄГіГ¬ГҐГ­ГІГ Г¬ГЁ */
 }
 
 .yellow-ticker.show {
@@ -1025,7 +1025,7 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
 
 .ticker-scroll {
     display: flex;
-    animation: tickerMove 9s linear infinite; /* ?? добавили 25s */
+    animation: tickerMove 9s linear infinite; /* ?? Г¤Г®ГЎГ ГўГЁГ«ГЁ 25s */
     white-space: nowrap;
 }
 
@@ -1035,7 +1035,7 @@ body, .screen, .card, .status, .menu-item, .error-card, .error-btn, .lock-screen
     line-height: 32px;
 }
 
-/* Анімація */
+/* ГЂГ­ВіГ¬Г Г¶ВіГї */
 @keyframes tickerMove {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
