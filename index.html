@@ -579,7 +579,15 @@ function showTab(name) {
   for (const key in tabs) {
     tabs[key].classList.remove("active");
   }
+
   tabs[name].classList.add("active");
+
+  // ⏱️ ДАТИ DOM СТАТИ ВИДИМИМ
+  if (name === "docs") {
+    requestAnimationFrame(() => {
+      initStatusMarquee();
+    });
+  }
 }
 
 // навбар кнопки
