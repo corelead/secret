@@ -598,30 +598,6 @@ document.getElementById("btn-menu").onclick = () => showTab("menu");
 </script>
 
 <script>
-document.querySelectorAll(".status").forEach(status => {
-    const wrap = status.querySelector(".scroll-wrapper");
-    if (!wrap) return;
-
-    // если одна копия текста — клонируем вторую
-    if (wrap.children.length === 1) {
-        wrap.append(wrap.children[0].cloneNode(true));
-    }
-
-    // Размер полного содержимого (двух копий текста)
-    const width = wrap.scrollWidth;
-
-    // Скорость в px/сек (регулируешь сам)
-    const speed = 40;
-
-    // Длительность анимации
-    const duration = width / speed;
-
-    // Полностью задаём анимацию
-    wrap.style.animation = `scrollText ${duration}s linear infinite`;
-});
-</script>
-
-<script>
   let errorCooldown = false;
 
 function showErrorOverlay() {
