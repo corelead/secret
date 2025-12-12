@@ -278,8 +278,13 @@
 .scroll-wrapper {
   display: flex;
   will-change: transform;
+  animation: none;
 }
 
+@keyframes scrollText {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
   
   .status-text {
     padding-right: 0px;      /* ðàññòîÿíèå ìåæäó êîïèÿìè */
