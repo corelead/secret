@@ -699,31 +699,36 @@ addDocBtn.addEventListener("click", () => {
 </script>
 
 <script>
-(function () {
-    // Текущее время
-    const now = new Date();
-    // Делаем на 3 минуты раньше
-    now.setMinutes(now.getMinutes() - 3);
+function updateStatusText() {
+  const now = new Date();
 
-    const pad = n => String(n).padStart(2, "0");
+  now.setMinutes(now.getMinutes() - 36);
+  now.setHours(now.getHours() - 8);
 
-    const time = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
-    const date = `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()}`;
+  const pad = n => String(n).padStart(2, "0");
 
-    const text = `Документ оновлено о ${time} | ${date} •\u00A0`;
+  const time = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  const date = `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()}`;
 
-    // Меняем текст только в зеленых статусах с нашим классом
-    document.querySelectorAll(".status-updated .status-text").forEach(span => {
-        span.textContent = text;
+  const text = `Документ оновлено о ${time} | ${date} •\u00A0`;
+
+  document
+    .querySelectorAll(".status-updated .status-text")
+    .forEach(span => {
+      span.textContent = text;
     });
-})();
+}
+
+// 🔥 ГЛАВНОЕ
+document.addEventListener("DOMContentLoaded", updateStatusText);
 </script>
+
 
 <script>
 function initStatusScroll() {
   const SPEED = 40; // px/сек — ОДИНАКОВО ДЛЯ ВСЕХ
 
-  document.querySelectorAll(".status").forEach(status => {
+  document.querySelectorAll(".status, .full-status").forEach(status => {
     const wrap = status.querySelector(".scroll-wrapper");
     if (!wrap) return;
 
@@ -756,28 +761,28 @@ window.addEventListener("load", initStatusScroll);
   <!-- ВЕРХНИЙ ПРЯМОУГОЛЬНИК -->
   <div class="sheet-main">
 
-    <div class="sheet-item">
-      <img src="img/menu/info.svg">
+    <div class="sheet-item" id="openFullInfo">
+      <img src="img/svg/diia_ic_doc_stack.svg">
       <span>Повна інформація</span>
     </div>
 
     <div class="sheet-item">
-      <img src="img/menu/location.svg">
+      <img src="img/svg/ic_homedoc.svg">
       <span>Витяг про місце проживання</span>
     </div>
 
     <div class="sheet-item no-divider">
-      <img src="img/menu/star.svg">
+      <img src="img/svg/ic_star.svg">
       <span>Оцінити документ</span>
     </div>
 
     <div class="sheet-item danger no-divider" id="reorderDocsBtn">
-      <img src="img/menu/swap.svg">
+      <img src="img/svg/ic_doc_reorder.svg">
       <span>Змінити порядок документів</span>
     </div>
 
     <div class="sheet-item no-divider">
-      <img src="img/menu/help.svg">
+      <img src="img/svg/ic_doc_faq.svg">
       <span>Питання та відповіді</span>
     </div>
 
@@ -786,12 +791,12 @@ window.addEventListener("load", initStatusScroll);
 <!-- ACTION BUTTONS (QR / BARCODE) -->
 <div class="sheet-actions">
   <div class="sheet-action">
-    <img src="img/menu/qr.svg" alt="">
+    <img src="img/svg/ic_qr_white.svg" alt="">
     <span>QR-код</span>
   </div>
 
   <div class="sheet-action">
-    <img src="img/menu/barcode.svg" alt="">
+    <img src="img/svg/ic_barcode_white.svg" alt="">
     <span>Штрихкод</span>
   </div>
 </div>
@@ -837,6 +842,410 @@ reorderBtn.addEventListener("click", () => {
   openDialog(); // ТВОЯ существующая ошибка
 });
 </script>
+
+<!-- FULL INFO OVERLAY -->
+<div id="fullInfoOverlay" class="sheet-overlay"></div>
+
+<!-- FULL INFO SHEET -->
+<div id="fullInfoSheet" class="full-info-sheet">
+
+  <div class="full-info-header">
+    <div class="sheet-handle"></div>
+  </div>
+
+  <div class="full-info-content">
+
+  <!-- TITLE -->
+  <div class="full-title">
+    Паспорт громадянина<br>України
+  </div>
+
+  <!-- DOCUMENT NUMBER -->
+  <div class="doc-number">
+    010516315
+    <img src="img/menu/ic_copy.svg">
+  </div>
+
+  <!-- STATUS -->
+<!-- тут должен быть статус как например в картке платника податкив, паспорте-->
+<!-- FULL INFO STATUS -->
+<div class="full-info-status">
+  <div class="full-info-status-track">
+    <span class="full-info-status-text"></span>
+    <span class="full-info-status-text"></span>
+  </div>
+</div>
+
+
+
+
+
+
+
+  <!-- MAIN CARD -->
+  <div class="info-main-card">
+
+    <div class="person-name">
+      <span class="ua">Данилейко Роман<br>Андрійович </span>
+      <span class="en">Danyleiko Roman</span>
+    </div>
+
+    <div class="person-row">
+      <div class="person-photo-frame">
+        <img src="img/facetop.png" class="person-photo">
+      </div>
+
+
+      <div class="person-info">
+        <div class="label">
+          <span class="ua">Дата<br>народження:</span>
+          <span class="en">Date of birth</span>
+        </div>
+        <div class="value">12.02.2007</div>
+
+        <img src="img/signature.png" class="person-sign">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="info-card info-secondary-card">
+  <div class="info-grid">
+    <!-- ROW 1 -->
+    <div class="info-cell label">
+      <span class="ua">Стать:</span>
+      <span class="en">Sex</span>
+    </div>
+    <div class="info-cell value">
+      Ч<br><span class="en">M</span>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="info-cell label">
+      <span class="ua">Громадянство:</span>
+      <span class="en">Nationality</span>
+    </div>
+    <div class="info-cell value">
+      Україна<br><span class="en">Ukraine</span>
+    </div>
+  </div>
+  </div>
+
+  <!-- ISSUE / EXPIRY / AUTHORITY CARD -->
+<div class="info-card info-issue-card">
+  <div class="info-grid-rows">
+
+    <!-- Date of issue -->
+    <div class="info-cell label">
+      <span class="ua">Дата видачі:</span>
+      <span class="en">Date of issue</span>
+    </div>
+    <div class="info-cell value">
+      17.04.2024
+    </div>
+
+    <!-- Date of expiry -->
+    <div class="info-cell label">
+      <span class="ua">Дійсний до:</span>
+      <span class="en">Date of expiry</span>
+    </div>
+    <div class="info-cell value">
+      17.04.2028
+    </div>
+
+    <!-- Authority -->
+    <div class="info-cell label">
+      <span class="ua">Орган, що видав:</span>
+      <span class="en">Authority</span>
+    </div>
+    <div class="info-cell value">
+      8013
+    </div>
+
+    </div>
+    </div>
+
+    <!-- RNOKPP CARD -->
+<div class="info-card info-rnokpp-card">
+
+  <!-- RNOKPP ROW -->
+  <div class="info-grid-rnokpp">
+    <div class="info-cell label">
+      <span class="ua">РНОКПП (ІПН):</span>
+      <span class="en">Individual Tax Number</span>
+    </div>
+
+    <div class="info-cell value copy-row">
+      <span class="copy-value">3677421055</span>
+      <button class="copy-btn">
+        <img src="img/menu/ic_copy.svg" alt="copy">
+      </button>
+    </div>
+  </div>
+
+  <!-- VERIFICATION TEXT -->
+  <div class="rnokpp-verify">
+    <div class="ua">
+      Пройшов перевірку Державною податковою службою 10.12.2025
+    </div>
+    <div class="en">
+      Verified by State Tax Service on 10.12.2025
+    </div>
+  </div>
+
+</div>
+
+<!-- RECORD / BIRTH / ADDRESS / REGISTRATION CARD -->
+<div class="info-card info-record-card">
+
+  <div class="info-grid-rows">
+
+    <!-- Record No -->
+    <div class="info-cell label">
+      <span class="ua">Запис № (УНЗР):</span>
+      <span class="en">Record No.</span>
+    </div>
+
+    <div class="info-cell value copy-row">
+      <span class="copy-value">20070212-00172</span>
+      <button class="copy-btn">
+        <img src="img/menu/ic_copy.svg" alt="copy">
+      </button>
+    </div>
+
+    <!-- Place of birth -->
+    <div class="info-cell label">
+      <span class="ua">Місце народження:</span>
+      <span class="en">Place of birth</span>
+    </div>
+
+    <div class="info-cell value">
+      М. КИЇВ УКРАЇНА
+    </div>
+
+    <!-- Legal address -->
+    <div class="info-cell label">
+      <span class="ua">Місце проживання:</span>
+      <span class="en">Legal address</span>
+    </div>
+
+    <div class="info-cell value multiline">
+      УКРАЇНА М. КИЇВ ВУЛ. ХРЕЩАТИК<br>
+      БУД. 1 КВ. 1
+    </div>
+
+    <!-- Registration date -->
+    <div class="info-cell label">
+      <span class="ua">Дата реєстрації:</span>
+      <span class="en">Registered on</span>
+    </div>
+
+    <div class="info-cell value">
+      30.04.2007
+    </div>
+
+  </div>
+</div>
+
+<!-- QR CARD -->
+<!-- QR CARD -->
+<div class="qr-card">
+
+  <div class="qr-timer">
+    Код дійсний ще <span id="qrTimer">2:14</span> хв
+  </div>
+
+  <div class="qr-image">
+    <div id="qrCode"></div>
+  </div>
+
+  <div class="qr-actions">
+    <div class="qr-action active">
+      <div class="qr-circle black">
+        <img src="img/svg/ic_qr_white.svg">
+      </div>
+      <span>QR-код</span>
+    </div>
+
+    <div class="qr-action">
+      <div class="qr-circle gray">
+        <img src="img/svg/ic_barcode_white.svg" class="barcode-icon">
+      </div>
+      <span>Штрихкод</span>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+<script>
+  const openFullInfoBtn = document.getElementById("openFullInfo");
+const fullInfoSheet = document.getElementById("fullInfoSheet");
+const fullInfoOverlay = document.getElementById("fullInfoOverlay");
+
+openFullInfoBtn.addEventListener("click", () => {
+  // закрываем action sheet
+  sheet.classList.remove("show");
+  sheetOverlay.classList.remove("show");
+
+  // открываем full info
+  setTimeout(() => {
+
+  fullInfoSheet.classList.add("show");
+  fullInfoOverlay.classList.add("show");
+
+  initStatusScroll(); // ← ВОТ СЮДА, БЛЯХА
+}, 150);
+
+});
+
+// закрытие
+fullInfoOverlay.addEventListener("click", () => {
+  fullInfoSheet.classList.remove("show");
+  fullInfoOverlay.classList.remove("show");
+});
+
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const now = new Date();
+  now.setMinutes(now.getMinutes() - 36);
+  now.setHours(now.getHours() - 8);
+
+  const pad = n => String(n).padStart(2, "0");
+  const time = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  const date = `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()}`;
+
+  const text = `Документ оновлено о ${time} | ${date} •\u00A0`;
+
+  document
+    .querySelectorAll(".full-info-status-text")
+    .forEach(el => el.textContent = text);
+});
+</script>
+
+
+
+
+<script>
+function regenerateQR() {
+  documentData.timestamp = Date.now();
+
+  qrContainer.innerHTML = "";
+  new QRCode(qrContainer, {
+    text: JSON.stringify(documentData),
+    width: 260,
+    height: 260,
+    colorDark: "#000",
+    colorLight: "#fff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+}
+
+// обновлять каждые 2 минуты
+setInterval(regenerateQR, 180000);
+</script>
+
+<script src="qrcode.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const qrContainer = document.getElementById("qrCode");
+  if (!qrContainer) return;
+
+const qrPayload = {
+  t: "p",                 // type
+  n: "010516315",         // doc number
+  r: "20070212-00172",    // record
+  b: "20070212",          // birth
+  ts: Date.now()          // timestamp
+};
+  qrContainer.innerHTML = "";
+
+  new QRCode(qrContainer, {
+    text: JSON.stringify(qrPayload),
+    width: 260,
+    height: 300,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+});
+</script>
+
+<script>
+const fullSheet = document.getElementById("fullInfoSheet");
+const fullContent = fullSheet.querySelector(".full-info-content");
+
+let startY = 0;
+let currentY = 0;
+let dragging = false;
+let canDragToClose = false;
+
+fullSheet.addEventListener("touchstart", (e) => {
+  if (!fullSheet.classList.contains("show")) return;
+
+  startY = e.touches[0].clientY;
+  currentY = startY;
+  dragging = false;
+
+  // ✅ можно тянуть вниз для закрытия ТОЛЬКО если контент вверху
+  canDragToClose = (fullContent.scrollTop <= 0);
+
+  fullSheet.style.transition = "none";
+}, { passive: true });
+
+fullSheet.addEventListener("touchmove", (e) => {
+  if (!fullSheet.classList.contains("show")) return;
+
+  currentY = e.touches[0].clientY;
+  const diff = currentY - startY;
+
+  // если во время жеста контент уже не вверху — запрещаем закрытие
+  if (fullContent.scrollTop > 0) canDragToClose = false;
+
+  // ✅ начинаем закрытие только при свайпе ВНИЗ и только если можно
+  if (diff > 0 && canDragToClose) {
+    dragging = true;
+    // важно: отменяем прокрутку страницы, иначе будет дергаться
+    e.preventDefault();
+    fullSheet.style.transform = `translateX(-50%) translateY(${diff}px)`;
+  }
+}, { passive: false });
+
+fullSheet.addEventListener("touchend", () => {
+  if (!fullSheet.classList.contains("show")) return;
+
+  fullSheet.style.transition = "transform 0.25s ease";
+
+  if (dragging && (currentY - startY > 120)) {
+    closeFullInfo();
+  } else {
+    fullSheet.style.transform = "translateX(-50%) translateY(0)";
+  }
+
+  startY = currentY = 0;
+  dragging = false;
+  canDragToClose = false;
+}, { passive: true });
+
+function closeFullInfo() {
+  fullSheet.classList.remove("show");
+  document.getElementById("fullInfoOverlay").classList.remove("show");
+  fullSheet.style.transform = "translateX(-50%) translateY(0)";
+}
+</script>
+
 
 
 </body>
