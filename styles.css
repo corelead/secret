@@ -1914,17 +1914,17 @@ background: #fff;
   padding: 16px;
   padding-bottom: 56px;      /* ?? ìåñòî ïîä èêîíêè */
 
-  background: rgba(232,243,239,0.7);
+  background: rgba(255,255,255,0.7);
   backdrop-filter: blur(20px);
   border-radius: 16px;
   margin-bottom: 49px;
 }
 
 /* Белые карточки ТОЛЬКО для Full Info */
-.full-info-sheet .info-card {
+/* .full-info-sheet .info-card {
   background: #fff;
   backdrop-filter: none;
-}
+} */
 
 .info-card h3 {
   font-size: 24px;
