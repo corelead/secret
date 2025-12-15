@@ -401,16 +401,15 @@
     </div>
 </div>
 
-<div id="errorOverlay" class="error-overlay">
+<div id="errorOverlay" class="error-overlay" onclick="showErrorOverlay()">
   <div class="error-card">
-      <div class="error-emoji">😔</div>
-      <div class="error-text">Немає доступу<br>до реєстру</div>
-
-      <button class="error-btn" onclick="hideErrorOverlay()">
-          Спробувати ще раз
-      </button>
+    <div class="trident-card">
+      <img src="img/svg/trident.svg" class="trident-icon" alt="">
+    </div>
   </div>
 </div>
+
+
 
 
 
@@ -757,30 +756,18 @@ document.getElementById("btn-menu").onclick = () => showTab("menu");
 </script>
 
 <script>
-  let errorCooldown = false;
-
 function showErrorOverlay() {
-    if (errorCooldown) return;  // кулдаун — не открываем
-
     const overlay = document.getElementById("errorOverlay");
-    overlay.classList.add("active");
+
+    // 🔁 toggle логика
+    if (overlay.classList.contains("active")) {
+        overlay.classList.remove("active");
+    } else {
+        overlay.classList.add("active");
+    }
 }
-
-
-function hideErrorOverlay() {
-    const overlay = document.getElementById("errorOverlay");
-    overlay.classList.remove("active");
-
-    // Включаем кулдаун
-    errorCooldown = true;
-
-    // Через сколько можно снова открывать
-    setTimeout(() => {
-        errorCooldown = false;
-    }, 1200); // 1.2 секунды — можешь менять
-}
-
 </script>
+
 
 <script>
 window.addEventListener("load", () => {
@@ -1062,7 +1049,7 @@ reorderBtn.addEventListener("click", () => {
           <span class="ua">Дата<br>народження:</span>
           <span class="en">Date of birth</span>
         </div>
-        <div class="value">12.10.2007</div>
+        <div class="value">12.11.2007</div>
 
         <img src="img/signature.png" class="person-sign">
       </div>
@@ -1147,10 +1134,10 @@ reorderBtn.addEventListener("click", () => {
   <!-- VERIFICATION TEXT -->
   <div class="rnokpp-verify">
     <div class="ua">
-      Пройшов перевірку Державною податковою службою 15.12.2025
+      Пройшов перевірку Державною податковою службою 14.12.2025
     </div>
     <div class="en">
-      Verified by State Tax Service on 15.12.2025
+      Verified by State Tax Service on 14.12.2025
     </div>
   </div>
 
@@ -1406,7 +1393,6 @@ function closeFullInfo() {
   fullSheet.style.transform = "translateX(-50%) translateY(0)";
 }
 </script>
-
 
 
 </body>
