@@ -1916,6 +1916,53 @@ background: #fff;
   margin-bottom: 49px;
 }
 
+.full-info-sheet .info-card {
+  background: #fff;
+  backdrop-filter: none;
+
+    position: relative;
+  isolation: isolate;
+
+  height: auto;              /* ? важно */
+  padding: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;      /* ?? место под иконки */
+
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.full-info-sheet .info-cell {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* лейблы */
+.full-info-sheet .info-cell.label .ua {
+  font-size: 14px;
+  display: block;
+  font-weight: 500;
+}
+
+.full-info-sheet .info-cell.label .en {
+    font-size: 14px;
+  display: block;
+  opacity: 0.6;
+}
+
+/* значения */
+.full-info-sheet .info-cell.value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.full-info-sheet .info-cell.value .en {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.6;
+}
 
 .info-card h3 {
   font-size: 24px;
